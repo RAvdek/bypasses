@@ -1,0 +1,986 @@
+\documentclass[11pt]{amsart}
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+
+%%%%Package Info%%%
+\usepackage{overpic, amssymb, times, graphicx, tikz-cd}
+\usepackage[all]{xy}
+\usepackage[backref=page]{hyperref}
+\usepackage{verbatim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+\urlstyle{same}
+
+%%%%Specifying new commands%%%%%%%%%%
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\sprod}{p}
+\DeclareMathOperator{\cop}{cop}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ind}{ind}
+\DeclareMathOperator{\sym}{sym}
+\DeclareMathOperator{\Symp}{Symp}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Maslov}{M}
+\DeclareMathOperator{\CZ}{CZ}
+\DeclareMathOperator{\bcs}{bcs}
+\DeclareMathOperator{\Flow}{Flow}
+\DeclareMathOperator{\ASL}{ASL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PD}{PD}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rot}{rot}
+\DeclareMathOperator{\lk}{lk}
+\DeclareMathOperator{\tb}{tb}
+\DeclareMathOperator{\wl}{wl}
+\DeclareMathOperator{\cycword}{cw}
+\DeclareMathOperator{\word}{w}
+\DeclareMathOperator{\cross}{cr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Diag}{Diag}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\Ret}{Ret}
+\DeclareMathOperator{\expdim}{expdim}
+\DeclareMathOperator{\SFT}{SFT}
+\DeclareMathOperator{\Sobalev}{W}
+\DeclareMathOperator{\Ltwo}{L^{2}}
+
+\newcommand{\thicc}[1]{\pmb{#1}}
+\DeclareMathOperator{\aug}{\thicc{\epsilon}}
+
+\newcommand{\filtration}{\mathcal{F}}
+\newcommand{\newRSFT}{PDH}
+\newcommand{\Algebra}{\mathcal{A}}
+\newcommand{\field}{\mathbb{F}}
+\newcommand{\Proj}{\mathbb{CP}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\disk}{\mathbb{D}}
+\newcommand{\grad}{\nabla}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\region}{\mathcal{R}}
+\newcommand{\Igrading}{\mathcal{I}_{\Lambda}}
+\newcommand{\action}{\mathcal{A}}
+\newcommand{\energy}{\mathcal{E}}
+\newcommand{\rect}{\mathcal{D}}
+\newcommand{\delbar}{\overline{\partial}}
+\newcommand{\Cinfty}{\mathcal{C}^{\infty}}
+\newcommand{\Rthree}{(\R^{3},\xi_{std})}
+\newcommand{\Lie}{\mathcal{L}}
+\newcommand{\Sthree}{(S^{3},\xi_{std})}
+\newcommand{\Tthree}{(T^{3},\xi_{1})}
+\newcommand{\Circle}{S^{1}}
+\newcommand{\Lj}{L_{j}}
+\newcommand{\lj}{\ell_{j}}
+\newcommand{\Lp}{L^{+}}
+\newcommand{\Lm}{L^{-}}
+\newcommand{\Nde}{N^{(\delta,\,\epsilon)}}
+\newcommand{\Njde}{N_{j}^{(\delta,\,\epsilon)}}
+\newcommand{\Nab}{N^{(\alpha,\,\beta)}}
+\newcommand{\Njab}{N_{j}^{(\alpha,\,\beta)}}
+\newcommand{\Bthree}{(B^{3},\xi_{std})}
+\newcommand{\LambdaZero}{\Lambda^{0}}
+\newcommand{\LambdaPlus}{\Lambda^{+}}
+\newcommand{\LambdaMinus}{\Lambda^{-}}
+\newcommand{\LambdaPM}{\Lambda^{\pm}}
+\newcommand{\SurgL}{M_{\Leg}}
+\newcommand{\SurgXi}{\xi_{\Leg}}
+\newcommand{\SurgLxi}{(\SurgL, \SurgXi)}
+\newcommand{\SurgLxiClosed}{(\SurgLClosed, \SurgXi)}
+\newcommand{\SurgLPrime}{\R^{3}_{\Lambda}}
+\newcommand{\SurgXiPrime}{\xi_{\Lambda}}
+\newcommand{\SurgLxiPrime}{(\SurgLPrime, \SurgXiPrime)}
+\newcommand{\pxy}{\pi_{xy}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\SLtwoR}{\SL(2, \R)}
+\newcommand{\GLtwoR}{\GL(2, \R)}
+\newcommand{\SymptwoR}{\Symp(2, \R)}
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\partialCH}{\partial_{CH}}
+\newcommand{\partialLCH}{\partial_{LCH}}
+\newcommand{\partialRSFT}{\partial_{RSFT}}
+\newcommand{\partialSFT}{\partial_{SFT}}
+\newcommand{\partialLRSFT}{\partial_{LRSFT}}
+\newcommand{\ModSpace}{\mathcal{M}}
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+\newcommand{\s}{\vskip.1in}
+\newcommand{\n}{\noindent}
+
+\newcommand{\orbitVS}{V}
+\newcommand{\SOT}{(S^{3},\xi_{OT})}
+\newcommand{\Mxi}{(M,\xi)}
+\newcommand{\MxiOT}{(M_{OT}, \xi_{OT})}
+\newcommand{\MxiGamma}{(M, \xi, \Gamma)}
+\newcommand{\AOB}{(\Sigma,\Phi)}
+\newcommand{\OB}{(B,\Sigma,\Phi)}
+\newcommand{\OBOT}{(S^{1}\times[0,1], D^{-}_{S^{1}\times\lbrace\frac{1}{2}\rbrace})}
+\newcommand{\Xfancy}{\mathcal{X}}
+\newcommand{\Cfancy}{\mathcal{C}}
+\newcommand{\Gfancy}{\mathcal{G}}
+\newcommand{\Hfancy}{\mathcal{H}}
+\newcommand{\Sfancy}{\mathcal{S}}
+\newcommand{\HeegaardHandle}{\Hfancy}
+\newcommand{\HeegaardSurface}{\Sfancy}
+\newcommand{\HeegaardCurve}{\mathbf{c}}
+\newcommand{\arrowupgrade}{\twoheadrightarrow}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\vertBand}[2]{B^{v}_{#1, #2}}
+\newcommand{\horBand}[2]{B^{h}_{#1, #2}}
+\newcommand{\annulus}[1][\epsilon]{A_{#1}}
+\newcommand{\Dlinearized}{\mathbf{D}}
+
+\newcommand{\sphere}{\mathbb{S}}
+\newcommand{\LagTuple}{\thicc{L}}
+
+\newcommand{\LoopSpace}{\mathcal{L}}
+\newcommand{\PathSpace}{\mathcal{P}}
+
+\newcommand{\hypersurface}{\Sigma}
+\newcommand{\posRegion}{R^{+}}
+\newcommand{\negRegion}{R^{-}}
+\newcommand{\posNegRegion}{R^{\pm}}
+\newcommand{\Lag}{L}
+\newcommand{\posLag}{\Lag^{+}}
+\newcommand{\negLag}{\Lag^{-}}
+\newcommand{\posNegLag}{\Lag^{\pm}}
+\newcommand{\Leg}{\Lambda}
+\newcommand{\posLeg}{\Leg^{+}}
+\newcommand{\negLeg}{\Leg^{-}}
+\newcommand{\thiccLeg}{\thicc{\Leg}}
+\newcommand{\thiccPosLeg}{\thicc{\Leg}^{+}}
+\newcommand{\thiccNegLeg}{\thicc{\Leg}^{-}}
+\newcommand{\thiccPosNegLeg}{\thicc{\Leg}^{\pm}}
+\newcommand{\posNegLeg}{\Leg^{\pm}}
+\newcommand{\divSet}{\Gamma}
+\newcommand{\xiDivSet}{\xi_{\divSet}}
+
+%%%%Theorem Definitions%%%%%%%
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{assump}[thm]{Assumptions}
+\newtheorem*{obs}{Observation}
+\newtheorem*{bd}{Boundary Conditions}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{properties}[thm]{Properties}
+\newtheorem{param}[thm]{Parameters}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{redef}[thm]{Redefinition}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{q}[thm]{Question}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{facts}[thm]{Facts}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{edits}[thm]{Editor notes}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{trans}{Translation}
+
+%%%% Formatting %%%%%%%%%
+%\topmargin0in \textheight8.7in \textwidth6.5in \oddsidemargin0in
+%\evensidemargin0in
+
+\title[Notes on bypasses]{Notes on bypasses}
+%\author{Russell Avdek}
+
+
+\begin{document}
+
+\begin{abstract}
+Here we take notes on \cite{HH:Bypass} and translate some of the key terminology into the language of double positive factorizations (DPFs).
+\end{abstract}
+
+\maketitle
+
+Throughout $\hypersurface$ is a Weinstein convex hypersurface with decomposition $\posNegRegion, \divSet$. We'll take $\dim \divSet = 2n-1, \dim \hypersurface = 2n$.
+
+Here is our convention for building Lefschetz fibrations: Start with a Lefschetz fibration for $W \times \disk \rightarrow \disk$ inducing an open book on the boundary whose page is $W$ and whose monodromy is trivial. Say that the whose mapping torus portion of the open book is $W \times \Circle$. If we attach a Weinstein handle at some $\Leg \subset W \times \{0\}$ then the Lefschetz fibration extends over the surgered Weinstein manifold so that the core of the handle becomes a Lefschetz thimble. The surgery locus in the boundary is $N_{W}(\Leg) \times [0, 3\epsilon]$ and the boundary of the cocore is $\Leg \times \{0\} \simeq \Leg \times \{3\epsilon\}$. Here $N_{W}(\Leg_{k})$ is a standard Weinstein neighborhood of $\Leg$ in $W$. The $\simeq$ is a Legendrian isotopy coming from our ability to slide boundary of the cocore through the handle.
+
+To build up to a general Lefschetz fibration, we attach $k$ Weinstein handles to the neighborhoods
+\begin{equation*}
+N_{W}(\Leg_{k}) \times \left[\frac{i-1}{k}, \frac{i-1}{k} + 3\epsilon  \right] \subset W \times \Circle, \quad \Circle = \R / \Z
+\end{equation*}
+using the $4\epsilon$ neighborhoods with $\epsilon$ small. With this ordering convention the monodromy of the open book on the boundary is
+\begin{equation*}
+\tau_{\Leg_{k}} \circ \cdots \circ \tau_{\Leg_{1}}: W \rightarrow W.
+\end{equation*}
+
+For a double positive factorization (DPF), we have $\posNegRegion$ determined by Lefschetz fibrations with fiber $W$ and ordered collections of (framed) Legendrian spheres $\thiccPosNegLeg = (\posNegLeg_{i})_{i=1}^{k^{\pm}}, \posNegLeg_{i} \subset W$. We identify with boundaries when we have an identifications of the fibers of the Lefschetz fibrations on the $\posNegRegion$ with a fixed $W$ and
+\begin{equation*}
+\tau_{\thiccPosLeg} := \tau_{\posLeg_{k^{+}}} \circ \cdots \circ \tau_{\posLeg_{1}} = \tau_{\negLeg_{k^{-}}} \circ \cdots \circ \tau_{\negLeg_{1}} =: \tau_{\thiccNegLeg}.
+\end{equation*}
+Specifically the identification of the monodromies allows us identify the mapping tori
+\begin{equation*}
+[0, 1] \times W/ \sim^{\pm}, \quad (1, x) \sim^{\pm} (0, \tau_{\thiccPosNegLeg}).
+\end{equation*}
+From the open book picture, the mapping tori make up all of the $\partial \posNegRegion$ except for the binding. The identification trivially extends over the binding since it is $\partial W$.
+
+\section{Legendrian sum and bypasses}
+
+\subsection{Legendrian sum}
+
+Given a pair $\posNegLeg$ of Legendrians in a contact manifold $\divSet$ intersecting $\xi$-transversely at a single point, we'll define the Legendrian sum using the Lagrangian projection formulation from \cite{HH:Bypass}.
+
+Let $N_{\divSet}(\negLeg \cup \posLeg)$ be a neighborhood in $\divSet$ inside of a subset of the $[0, 4\epsilon]_{t} \times W$ where $W$ is a Weinstein manifold containing a plumbing of two copies of $\disk^{\ast}\sphere^{n-1}$. The $\posNegLeg$ are given by the $0$-sections of the $\disk^{\ast}\sphere^{n-1}$ inside $\{0\} \times W$ and our contact structure is determined by $dt + \beta$ for $\beta$ a Liouville form on $W$. Then define
+\begin{equation*}
+\negLeg \uplus \posLeg \subset [\epsilon, 2\epsilon] \times W
+\end{equation*}
+to be the Legendrian lift of the Lagrangian sphere
+\begin{equation*}
+\tau_{\posLeg} \negLeg = \tau_{\negLeg}^{-1} \posLeg \subset W
+\end{equation*}
+where $\tau$ is a Dehn twist. Then
+\begin{equation*}
+F^{\pm\epsilon}(\negLeg \uplus \posLeg) := \Flow_{\partial_{t}}^{\pm \epsilon}(\negLeg \uplus \posLeg) \subset ([0, \epsilon] \cup [2\epsilon, 3\epsilon]) \times W.
+\end{equation*}
+
+\subsubsection{Translation}
+
+We'll always think of $\posNegLeg$ as being Legendrian spheres sitting on a single page $W$ of an open book for $\divSet$. We'll always work far from the binding so that we can assume that each $t = t_{0}$ slice of $[-2\epsilon, 2\epsilon] \times W$ also sits in a page. After a slight perturbation of the open book the $(\negLeg \uplus \posLeg)^{\pm \epsilon}$ can be assumed to sit on pages as well.
+
+One key observation is that we have conjugacy relations and a braid relation when $\posNegLeg$ intersect at a single point in $W$,
+\begin{equation*}
+\tau_{\tau_{\posLeg}\negLeg} = \tau_{\posLeg} \circ \tau_{\negLeg} \circ \tau_{\posLeg}^{-1}, \quad \tau_{\posLeg}\tau_{\negLeg}\tau_{\posLeg} \simeq \tau_{\negLeg}\tau_{\posLeg}\tau_{\negLeg}.
+\end{equation*}
+Another observation is that if $\posLeg$ is an unknot, then $\negLeg \uplus \posLeg$ will be loose in the ambient contact manifold. In the low dimensional case, $\dim \divSet = 3$, this will be $\negLeg$ both positively and negatively stabilized.
+
+
+\subsection{Bypass}
+
+\begin{defn}
+Bypass attachment data consists of a tuple $(\posNegLeg, \posNegLag)$ for which $\posNegLeg$ is a pair of Legendrians intersecting in a single point and $\posNegLag$ are Lagrangian slice disks in the $\posNegRegion$ for the $\posNegLeg$.
+\end{defn}
+
+If we attach a bypass to $[-\epsilon, 0] \times \hypersurface$ at $\{ 0 \} \times \hypersurface$ using the data of $(\posNegLeg, \posNegLag)$ then we get a contact structure on $[-\epsilon, 1] \times \hypersurface$ with $\hypersurface_{1} = \{1\} \times \hypersurface$ described as in \cite[Theorem 5.1.3]{HH:Bypass}:
+\be
+\item $\posNegRegion_{1}$ is obtained by attaching a Weinstein handle to $\negLeg \uplus \posLeg$ and cutting out standard neighborhoods of the $F^{\mp \epsilon}\posNegLag$.
+\item $\divSet_{1}$ is obtained by performing a contact $+1$ surgery on $F^{\mp\epsilon}\posNegLeg$ and a contact $-1$ surgery along $(\negLeg \uplus \posLeg)$.
+\item The boundaries of the $\posNegRegion_{1}$ are identified by the contactomorphism $\partial \posRegion_{1} \rightarrow \partial \negRegion_{1}$ obtained by sliding $F^{-\epsilon}\posLeg$ up over $(\negLeg \uplus \posLeg)$ to $F^{\epsilon}\negLeg$.
+\ee
+
+\subsubsection{Translation}
+
+In the DPF picture, we assume that the $\posNegLeg$ are the $\posNegLeg_{1} \in \thiccPosNegLeg$ so that
+\begin{equation*}
+\negLeg \uplus \posLeg = \tau_{\posLeg_{1}}\negLeg_{1}.
+\end{equation*}
+If we are given a Lefschetz fibration determined by a $\thiccLeg$, then cutting out the disk $\Lag_{1}$ whose boundary is $\Leg_{1}$ amounts to replacing $\thiccLeg = (\Leg_{1}, \dots, \Leg_{k})$ with $(\Leg_{2}, \dots, \Leg_{k})$.
+
+Let's assume that the surgery loci for the $\posNegLeg_{1}$ are within $[\epsilon, 2\epsilon] \times W$. Since we use the $\{ 0 \} \times W$ to identify the fibers of the fibration, let's say that $\negLeg_{1} \uplus \posLeg_{1}$ sits on $\{\epsilon\} \times W$ and that there are no surgery loci in $[0, \epsilon] \times W$.
+
+From the positive region description of $\divSet$, we perform add a negative Dehn twist for the contact $+1$ surgery at $\{ 0 \} \times W$, and have the Weinstein handle attachment locus at $\{ \epsilon \} \times W$. As in step (3) of the definition, we slide the $+1$ surgery locus up through the $\{ \epsilon \} \times W$. Now the $+1$ surgery occurs along $\tau_{\negLeg \uplus \posLeg}\posLeg$ and we compute
+\begin{equation*}
+\begin{aligned}
+\left(\tau_{\tau_{\negLeg \uplus \posLeg}\posLeg}\right)^{-1} &= \left(\tau_{\negLeg \uplus \posLeg} \circ \tau_{\posLeg} \circ \tau_{\negLeg \uplus \posLeg}^{-1} \right)^{-1}= \left(\tau_{\posLeg}\tau_{\negLeg}\tau_{\posLeg}^{-1}\tau_{\posLeg}\tau_{\posLeg}^{-1}\tau_{\negLeg}^{-1}\tau_{\posLeg}\right)^{-1}\\
+\end{aligned}
+\end{equation*}
+
+We use the pushoff directions ($F^{\pm}$) to determine the order in which twists are added to the modnodromies. To follow step (2) in the definition the monodromies become modified as
+\begin{equation*}
+\begin{aligned}
+\tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{1}} &\mapsto \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1} \circ \tau_{\posLeg_{1}}\\
+\tau_{\negLeg_{k}} \circ \cdots \circ \tau_{\negLeg_{1}} &\mapsto \tau_{\negLeg_{k}} \circ \cdots \circ \tau_{\negLeg_{1}}^{-1} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\negLeg_{1}}.
+\end{aligned}
+\end{equation*}
+In the first row the $\tau_{\posLeg_{1}}^{-1}$ is added below the new surgery locus and in the second row the $\tau_{\negLeg_{1}}^{-1}$ is added above. These simplify to
+\begin{equation*}
+\begin{aligned}
+\tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{1}} &\mapsto \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}}\\
+\tau_{\negLeg_{k}} \circ \cdots \circ \tau_{\negLeg_{1}} &\mapsto \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{1}}^{-1} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}.
+\end{aligned}
+\end{equation*}
+
+
+
+\begin{thebibliography}{}
+\begin{comment}
+
+\bibitem[Abb11]{Abbas:JBook}
+C. Abbas, \textit{Holomorphic open book decompositions}, Duke Math. J., Vol. 158, p.29-82, 2011.
+
+\bibitem[AbbCH05]{ACH:PlanarWeinstein}
+C. Abbas, K. Cieliebak, H. Hofer, \textit{The Weinstein conjecture for planar contact structures in dimension three}, Comment. Math. Helv. 80, p.771–793, 2005.
+
+\bibitem[AS06]{AS:Cotangent}
+A. Abbondandolo and M. Schwarz, \textit{On the Floer homology of cotangent bundles}, Comm.
+Pure Appl. Math., 59, p.254–316, 2006.
+
+\bibitem[Abo15]{Abouzaid:Viterbo}
+M. Abouzaid, \textit{Symplectic cohomology and Viterbo’s theorem}, In ``Free loop
+spaces in geometry and topology'', volume 24 of IRMA Lect. Math. Theor. Phys., Eur. Math. Soc., Z\"{u}rich, p.271–485, 2015
+
+\bibitem[Al79]{Ahlfors}
+L. Ahlfors, \textit{Complex Analysis: An Introduction to the Theory of Analytic Functions of One Complex Variable}, New York: McGraw-Hill, 1979.
+
+
+\bibitem[AS08]{AS:Pencil}
+D. Auroux and I. Smith, \textit{Lefschetz pencils, branched covers and symplectic invariants}, in \textit{Symplectic 4-manifolds and algebraic surfaces}, Lecture Notes in Math vol. 1938, Springer, Berlin, p.1–53, 2008.
+
+\bibitem[Av11]{Avdek:ContactSurgery}
+R. Avdek, \textit{Contact surgery and supporting open books}, Algebr. Geom. Topol. Volume 13, p.1613-1660, 2013.
+
+\bibitem[Av20]{Avdek:Dynamics}
+R. Avdek, \textit{Combinatorial Reeb dynamics on punctured contact $3$-manifolds}, to appear in Geom. Topol., arXiv:2005.11428, 2020.
+
+\bibitem[Av21a]{Avdek:Liouville}
+R. Avdek, \textit{Liouville hypersurfaces and connect sum cobordisms}, J. Symplectic Geom., Vol. 19, 2021.
+
+\bibitem[Av21b]{Avdek:LSFT}
+R. Avdek, \textit{Simplified SFT moduli spaces for Legendrian links}, arXiv:2104.00505, 2021.
+
+\bibitem[Av22a]{Avdek:PDH}
+R. Avdek, \textit{A filtered generalization of the Chekanov-Eliashberg algebra}, arXiv:2205.13031, 2022.
+
+\bibitem[Av22b]{Avdek:Software}
+R. Avdek, \textit{Legendrian links}, software available at \url{https://github.com/RAvdek/legendrian_links}, 2022.
+
+\bibitem[BH15]{BH:ContactDefinition}
+E. Bao and K. Honda, \textit{Semi-global Kuranishi charts and the definition of contact homology}, arXiv:1512.00580, 2015.
+
+\bibitem[BH18]{BH:Cylindrical}
+E. Bao and K. Honda, \textit{Definition of cylindrical contact homology in dimension three}, Journ. of Topology, Vol. 11, No. 4, p.1002-1053, 2018.
+
+
+\bibitem[BM]{SmoothAtlas}
+D. Bar-Natan, S. Morrison, et. al, \textit{The Rolfsen knot table}, \url{http://katlas.org/wiki/The_Rolfsen_Knot_Table}
+
+\bibitem[Bj16]{Bjorklund:LCH}
+J. Bj\"{o}rklund, \textit{Legendrian contact homology in the product of a punctured Riemann surface and the real line}, Journal of the London Math. Soc., Vol. 94, no 3, p.970-992, 2016.
+\end{comment}
+
+\bibitem[BEM15]{BEM:OT}
+M. S. Borman, Y. Eliashberg, and E. Murphy, \textit{Existence and classification of overtwisted contact structures in all dimensions}, Acta Math. 215, p.281–361, 2015.
+
+\begin{comment}
+\bibitem[B02]{Bourgeois:Thesis}
+F. Bourgeois, \textit{A Morse-Bott approach to contact homology}, PhD thesis, Stanford University, 2002.
+
+\bibitem[B03]{Bourgeois:ContactIntro} 
+F. Bourgeois, \textit{Introduction to contact homology}, lecture notes available at \url{https://www.imo.universite-paris-saclay.fr/~bourgeois/papers/Berder.pdf}, 2003.
+
+\bibitem[BC14]{BC:Bilinearized}
+F. Bourgeois and B. Chantraine, \textit{Bilinearized Legendrian contact homology and the augmentation category}, J. Symplectic Geom., Volume 12, p.553–583, 2014.
+
+\bibitem[BG19]{BG:Bilinearized}
+F. Bourgeois and D. Galant, \textit{Geography of bilinearized Legendrian contact homology}, arXiv:1905.12037, 2019.
+
+
+\bibitem[BM03]{BM:Orientations}
+F. Bourgeois and K. Mohnke, \textit{Coherent orientations in symplectic field theory}, Math. Z. 248, p.123-146, 2003.
+
+\bibitem[BEE11]{BEE:Product}
+F. Bourgeois, T. Ekholm, and Y. Eliashberg, \textit{Symplectic homology product via Legendrian surgery}, PNAS Volume 108, Number 20, p.8114-8121, 2011.
+
+\bibitem[BEE12]{BEE:LegendrianSurgery}
+F. Bourgeois, T. Ekholm, and Y. Eliashberg, \textit{Effect of Legendrain Surgery}, Geom. Topol., Volume 16, Number 1, p.301-389, 2012.
+
+\bibitem[BEHW03]{SFTCompactness}
+F. Bourgeois, Y. Eliashberg, H. Hofer, and K. Wysocki, \textit{Compactness results in symplectic field theory}, Geom. Topol., Volume 7, Number 2, p.799-888, 2003.
+
+\bibitem[BN10]{AlgebraicallyOvertwisted}
+F. Bourgeois and K. Niederkr{\"u}ger, Towards a good definition of algebraically overtwisted,
+Expo. Math. 28, no. 1, 85–100, 2010.
+
+\bibitem[BO09a]{BO:MorseBott}
+F. Bourgeois and A. Oancea, \textit{Symplectic homology, autonomous Hamiltonians, and Morse–Bott moduli spaces}, Duke Math. J. 146, p.71–174, 2009.
+
+\bibitem[BO09b]{BO:ExactSequence}
+F. Bourgeois and A. Oancea, \textit{An exact sequence for contact- and symplectic homology},
+Invent. math., Volume 175, p. 611–680, 2009.
+
+\bibitem[BT82]{BottTu}
+R. Bott and L. R. Tu, \textit{Differential forms in algebraic topology}, Graduate Texts in Mathematics 82, Springer-Verlag, 1982.
+\end{comment}
+
+\bibitem[BHH]{BHH:GirouxCorrespondence}
+J. Breen, K. Honda, and Y. Huang, \textit{The Giroux correspondence in arbitrary dimensions}, arXiv:2307.02317, 2023.
+
+\begin{comment}
+\bibitem[CGKS14]{CGKS:Polyfilling}
+C. Cao, N. Gallup, K. Hayden, J. M. Sabloff, \textit{Topologically Distinct Lagrangian and Symplectic Fillings}, Math. Research Letters, Vol. 21, p.85-99, 2014.
+
+\begin{comment}
+\bibitem[CMP19]{CMP:OT}
+R. Casals, E. Murphy, and F. Presas, \textit{Geometric criteria for overtwistedness}, J. Amer. Math. Soc. 32, p.563–604, 2019.
+
+
+\bibitem[CG86]{CG:Cobordisms}
+A. Casson, C. M. Gordon, \textit{Cobordism of classical knots}, from: "{\'A} la recherche de la topologie perdue" (editors L Guillou, A Marin), Progr. Math. 62, Birkh{\"a}user 181, 1986.
+
+\bibitem[CDGG20]{Cthulu}
+B. Chantraine, G. Dimitroglou Rizell, P. Ghiggini, and R. Golovko, \textit{Floer theory for Lagrangian cobordisms}, J. Differential Geom. 114 no. 3, p.393–465, 2020.
+
+\bibitem[Ch10]{Chantraine:Concordance}
+B. Chantraine, \textit{Lagrangian concordance of Legendrian knots}, Algebr. Geom. Topol. 10, p.63-85, 2010.
+
+\bibitem[Ch10]{Chantraine:Symmetric}
+B. Chantraine, \textit{Lagrangian concordance is not a symetric relation}, Quantum Topol. Vol. 6,, p.451-474, 2015.
+
+\bibitem[CS99]{StringTopology}
+M. Chas and D. Sullivan \textit{String topology}, preprint (1999), math.GT/9911159
+
+\bibitem[CS04]{CS:StringDiagrams}
+M. Chas, and D. Sullivan, \textit{Closed string operators in topology leading to Lie bialgebras and higher string algebra}, The legacy of Niels Henrik Abel, p.771–784, Springer, Berlin, 2004.
+
+\bibitem[C02]{Chekanov:LCH}
+Y. Chekanov, \textit{Differential algebra of Legendrian links}, Invent. Math., Volume 150, Number 3, p.441–483, 2002.
+
+\bibitem[CN15]{LegKnotAtlas}
+W. Chongchitmate and L. Ng, \emph{The Legendrian knot atlas},
+\url{http://www.math.duke.edu/~ng/atlas/}, 2015.
+
+\bibitem[Ci02a]{Cieliebak:Subcritical}
+K. Cieliebak, \textit{Subcritical Stein manifolds are split}, arXiv:math/0204351v1, 2002.
+
+\bibitem[Ci02b]{Cieliebak:SubcriticalSH}
+K. Cieliebak, \textit{Handle attaching in symplectic homology and the Chord Conjecture}, J.
+Eur. Math. Soc., p.115–142, 2002.
+
+
+
+\bibitem[CE12]{SteinToWeinstein} 
+K. Cieliebak and Y. Eliashberg, \textit{From Stein to Weinstein and back}, volume 59 of American
+Mathematical Society Colloquium Publications. American Mathematical Society, Providence, RI,
+2012.
+
+\bibitem[CFL20]{CFL:Linfty}
+K. Cieliebak, K. Fukaya, and J. Latschev, \textit{Homological algebra related to surfaces with boundary}, Quantum Topol., Vol. 11, p.691–837, 2020.
+
+\bibitem[CL07]{CL:SFTStringTop}
+K. Cieliebak and J. Latschev, \textit{The role of string topology in symplectic field theory},  New perspectives and challenges in symplectic field theory, CRM Proc. Lecture Notes, vol. 49, Amer. Math. Soc., p. 113–146, 2009.
+
+\bibitem[CM07]{CM:GW}
+K. Cieliebak and K. Mohnke, \textit{Symplectic hypersurfaces and transversality in Gromov-Witten theory}, J. Symplectic Geom. 5, p.281-356, 2007.
+
+\bibitem[CEKSW11]{CEKSW:AugCat}
+G. Civan, J. Etnyre, P. Koprowski, J. Sabloff, and A. Walker, \textit{Product structures for Legendrian contact homology}, Math. Proc. Cambridge Philos. Soc., Vol. 150, p.291–311, 2011.
+
+\bibitem[CGH11]{CGH:HFequalsECH}
+V. Colin, P. Ghiggini and K. Honda, \textit{Equivalence of Heegaard Floer homology and embedded contact homology via open book decompositions}, Proceedings of the National Academy of Sciences of the United States of America,
+Vol. 108, No. 20, p.8100-8105, 2011
+
+\bibitem[CGHH10]{CGHH:Sutures}
+V. Colin, P. Ghiggini, K. Honda, and M. Hutchings, \textit{Sutures and contact homology I}, Geom. Topol., Vol. 15, p.1749-1842, 2011.
+
+
+\bibitem[CHT]{CHT:HF}
+V. Colin, K. Honda, Y. Tian, \textit{Applications of higher-dimensional Heegaard Floer homology to contact topology}, https://arxiv.org/abs/2006.05701, 2020.
+
+\bibitem[CET19]{CET:PlusOneFilling}
+J. Conway, J. Etnyre, and B. Tosun, \textit{Symplectic fillings, contact surgeries, and Lagrangian disks}, IMRN, 2019.
+
+
+\bibitem[CKK14]{CKK:TightPlanar}
+J. Conway, A. Kaloti, D. Kulkarni, \textit{Tight Planar Contact Manifolds with Vanishing Heegaard Floer Contact Invariants}, arXiv:1409.4055, 2014.
+
+\bibitem[CFC20]{CFC:RelativeContactHomology}
+L. C\^{o}t\'{e}, F.S. Fauteux-Chapleau, \textit{Homological invariants of codimension 2 contact submanifolds}, 	arXiv:2009.06738, 2020.
+
+
+\bibitem[CNS16]{CNS:Concordance}
+C. Cornwell, L. Ng, and S. Sivek, \textit{Obstructions to Lagrangian concordance}, Algebr. Geom. Topol., Vol. 16, p.797–824, 2016.
+
+\bibitem[DL19]{DiogoLisi}
+L. Diogo and S. Lisi, \textit{Symplectic homology of complements of smooth divisors}, J. Topology 12, p. 967-1030, 2019. 
+
+\bibitem[DE20]{DE:Alexander}
+L. Diogo and T. Ekholm, \textit{Augmentations, annuli, and Alexander polynomials}, 	arXiv:2005.09733, 2020.
+
+\bibitem[Di92]{Dimca}
+A. Dimca, \textit{Singularities and the topology of hypersurfaces}, Springer-Verlag, New York, 1992.
+
+\bibitem[DR16]{DR:Lifting}
+G. Dimitroglou Rizell, \textit{Lifting pseudo-holomorphic polygons to the symplectization of $P \times \R$ and applications}, Quantum Topol. 7, p.29–105, 2016.
+
+\bibitem[DRS20]{DRS:Persistence}
+G. Dimitroglou Rizell and M. Sullivan, \textit{The persistence of the Chekanov–Eliashberg algebra}, Sel. Math. New Ser., Vol. 26, 2020.
+
+\bibitem[DF18]{DF:HCompactness}
+A. Doicu and U. Fuchs, \textit{A Compactness Result for $\mathcal{H}$-holomorphic Curves in Symplectizations}, arXiv:1802.08991, 2018.
+
+\bibitem[DG04]{DG:Surgery}
+F. Ding and H. Geiges, \textit{A Legendrian surgery presentation of contact 3-manifolds}, Math. Proc. Cambridge Philos. Soc.,
+Vol. 136, p.583-598, 2004.
+
+\bibitem[DG08]{DG:HandleMoves}
+F. Ding and H. Geiges, \textit{Handle moves in contact surgery diagrams}, J. Topology, Volume 2, Number 1, p.105-122, 2008.
+
+\bibitem[Dr04]{Dragnev}
+D. Dragnev, \textit{Fredholm theory and transversality for noncompact pseudoholomorphic maps in symplectizations}, Comm. Pure Appl. Math. 57, p.726–763, 2004.
+
+\bibitem[EK07]{Ekholm:FlowTrees}
+T. Ekholm, \textit{Morse flow trees and Legendrian contact homology in 1-jet spaces}, Geom. Topol., Vol. 11, p.1083–1224, 2007.
+
+\bibitem[Ek08]{Ekholm:Z2RSFT}
+T. Ekholm, \textit{Rational symplectic field theory over $\Z_{2}$ for exact Lagrangian cobordisms}, J. Eur. Math. Soc. (JEMS) 10, p.641–704, 2008.
+
+\bibitem[Ek16]{Ekholm:Nonloose}
+T. Ekholm, \textit{Non-loose Legendrian spheres with trivial contact homology DGA}, Journal of Topology, Volume 9, p.826–848, 2016.
+
+\bibitem[Ek16]{Ekholm:SurgeryLectures}
+T. Ekholm, \textit{Legendrian surgery formulas and applications}, lecture notes from the SFT-VIII conference available at \url{https://www.mathematik.hu-berlin.de/~wendl/SFT8/program.html}, 2016.
+
+\bibitem[Ek19]{Ekholm:SurgeryCurves}
+T. Ekholm, \textit{Holomorphic curves for Legendrian surgery}, arXiv:1906.07228, 2019.
+
+\bibitem[EES09]{EES:Duality}
+T. Ekholm, J. B. Etnyre, and J. M. Sabloff, \textit{A duality exact sequence for Legendrian contact
+homology}, Duke Math. J., 150(1), p.1–75, 2009.
+
+\bibitem[EES05]{EES:Orientations}
+T. Ekholm, J. Etnyre, and M. Sullivan, \textit{Orientations in Legendrian Contact Homology and Exact Lagrangian Immersions}, IJM 16, p.453-532, 2005.
+
+\bibitem[EES05]{EES:LegendriansInR2nPlus1}
+T. Ekholm, J. Etnyre, and M. Sullivan, \textit{The contact homology of Legendrian submanifolds of $\R^{2n+1}$}, J. Differential Geom. Volume 71, Number 2, p.177-305, 2005.
+
+\bibitem[EHK16]{EHK:LagrangianCobordisms}
+T. Ekholm, K. Honda, and T. K\'{a}lm\'{a}n, \textit{Legendrian knots and exact Lagrangian cobordisms}, J. Eur. Math. Soc. (JEMS), 18(11), p.2627–2689, 2016.
+
+\bibitem[EkN15]{EkholmNg:Subcritical}
+T. Ekholm and L. Ng, \textit{Legendrian contact homology in the boundary of a subcritical Weinstein 4-manifold}, J. Differential Geom., Volume 101, Number 1, p.67-157, 2015.
+
+\bibitem[EkN18]{EkholmNg:LSFT}
+T. Ekholm and L. Ng, \textit{Higher genus knot contact homology and recursion for colored HOMFLY-PT polynomials}, arXiv:1803.04011, 2018.
+
+\bibitem[ENS18]{ENS:CompleteInvariant}
+T. Ekholm, L. Ng, and V. Shende, \textit{A complete knot invariant from contact homology}, Invent. Math., Vol. 211, p.1149–1200, 2018.
+
+\bibitem[E98]{Eliashberg:LCH}
+Y. Eliashberg, \textit{Invariants in contact topology}, Proceedings of the International Congress of Mathematicians, Vol. II (Berlin), number Extra Vol. II, p.327–338 (electronic), 1998.
+
+\bibitem[EGH00]{EGH:SFTIntro}
+Y. Eliashberg, A Givental, and H. Hofer, \textit{Introduction to symplectic field theory}, Geom. Funct. Anal., Special Volume, Part II, p.560-673, 2000.
+
+\bibitem[El89]{Eliash:OTClassification}
+Y. Eliashberg, \textit{Classification of overtwisted contact structures on 3-manifolds}, Invent. Math. 98, p.623-637, 1989.
+
+\bibitem[El91]{Eliash:Filling}
+Y. Eliashberg, \textit{On symplectic manifolds with some contact properties}, J. Differential Geom. 33, p.233–238, 1991.
+
+\bibitem[EM02]{EM:Hprinciple}
+Y. Eliashberg, N. Michachev, {\em Introduction to the h-principle}, Graduate Studies in Mathematics, Volume 48, American Mathematical Society, Providence, RI (2002)
+
+\bibitem[EP96]{EP:UnknotFIlling}
+Y. Eliashberg and L. Polterovich, \textit{Local Lagrangian 2-knots are trivial}, Ann. of Math., Vol. 144, p.61–76, 1996.
+
+\bibitem[Et05]{Etnyre:KnotNotes}
+J. Etnyre, \textit{Legendrian and Transversal Knots}, Handbook of Knot Theory Elsevier B. V., p.105-185, 2005.
+
+\bibitem[Et08]{Etnyre:ContactSurgery}
+J. Etnyre, \textit{On contact surgery}, Proc. Amer. Math. Soc., Volume 136, p.3355-3362, 2008.
+
+\bibitem[EtGh00]{EG:ReebLinks}
+J. Etnyre and R. Ghrist, \textit{Contact Topology and Hydrodynamics III: Knotted Orbits}, Transactions of the Amer. Math. Soc., Vol. 352, No. 12, p. 5781-5794, 2000.
+
+\bibitem[EH01]{EtnyreHonda:Knots}
+J. Etnyre and K. Honda, \textit{Knots and Contact Geometry I: Torus Knots and the Figure Eight Knot}, J. Symplectic Geom., Volume 1, Number 1, p.63-120, 2001.
+
+\bibitem[EN18]{EtnyreNg:LCHSurvey}
+J. Etnyre and L. Ng, \textit{Legendrian contact homology in $\R^{3}$}, arXiv:1811.10966v3, 2018.
+
+\bibitem[ENS02]{ENS:Orientations}
+J. Etnyre, L. Ng and J. Sabloff, \textit{Invariants of Legendrian Knots and Coherent Orientations}, J. Symp. Geom., Vol. 1, No. 2, p.321–367, 2002.
+
+\bibitem[ENV13]{ENV:Twists}
+J. Etnyre, L. Ng, and V. Vertesi, \textit{Legendrian and transverse twist knots}, J. Eur. Math. Soc. (JEMS), Volume 15, no. 3, p.969–995, 2013.
+
+\bibitem[EO08]{EO:OBInvariants}
+J. Etnyre and B. Ozbagci, \textit{Invariants of contact structures from open books}, Trans. Amer. Math. Soc. Volume 360, Number 6, p.3133–3151, 2008.
+
+\bibitem[EV18]{EV:Satellites}
+J. Etnyre and V. Vertesi, \textit{Legendrian satellites}, IMRN, Issue 22, p.7241–7304, 2018.
+
+\bibitem[Fa11]{Fabert:Pants}
+O. Fabert, \textit{Obstruction bundles over moduli spaces with boundary and the action filtration in symplectic field theory}, Mathematische Zeitschrift, Volume 269, p.325–372, 2011.
+
+
+\bibitem[Fl88]{Floer:Morse}
+A. Floer, \textit{Morse theory for Lagrangian intersections}, J. Diff. Geometry, p.513-547, 1988.
+
+
+\bibitem[Fu06]{Fukaya:LagrangianSubmanifolds}
+K. Fukaya, \textit{Applications of Floer homology of Lagrangian submanifolds to symplectic topology}, Morse Theoretic Methods in Nonlinear Analysis and in Symplectic Topology (P.
+Biran, O. Cornea, eds.), Nato Science Series, Volume 217, p.231-276, 2006.
+
+\bibitem[FOOO09]{FOOO}
+K. Fukaya, Y. Oh, H. Ohta and K. Ono, \textit{Lagrangian intersection Floer theory: anomaly
+and obstruction, Part II}, AMS/IP Studies in Advanced Mathematics, 46.2. American Mathematical
+Society, Providence, RI; International Press, Somerville, MA, 2009.
+
+\bibitem[FT17]{FT:Kuranishi}
+K. Fukaya and M. Tehrani, \textit{Gromov-Witten theory via Kuranishi structures}, arXiv:1701.07821, 2017.
+
+\bibitem[G94]{Geiges:DisconnectedBoundary}
+H. Geiges, \textit{Symplectic manifolds with disconnected boundary of contact type}, Internat. Math. Res. Notices, p.23–30, 1994.
+
+
+\bibitem[GZ13]{GZ:FourBall}
+H. Geiges and K. Zehmisch, \textit{How to recognize a 4-ball when you see one}, M{\"u}nster J. Math., Volume 6, p.525–554, 2013.
+
+\bibitem[G91]{Giroux:Convexity}
+E. Giroux, \textit{Convexit\'{e} en topologie de contact}, Comment. Math. Helv. 66, p.637–677, 1991.
+
+\bibitem[G02]{Giroux:ContactOB}
+E. Giroux, \textit{G\'{e}om\'{e}trie de contact: de la dimension trois vers les dimensions sup\'{e}rieures}, Proceedings of the International Congress of Mathematicians, Vol. II, Higher Ed. Press, Beijing, p.405-414, 2002.
+
+\bibitem[Girou17]{Giroux:IdealLiouville}
+E. Giroux, \textit{Ideal Liouville Domains - a cool gadget}, J. Symplectic Geom., Volume 18, p.769–790, 2017.
+\end{comment}
+
+\bibitem[GP17]{GirouxPardon}
+E. Giroux and J. Pardon, \textit{Existence of Lefschetz fibrations on Stein and Weinstein domains}, Geom. Topol., 21, no. 2, 963–997, 2017.
+
+\begin{comment}
+\bibitem[Go98]{Gompf:Handlebodies}
+R. Gompf, \textit{Handlebody construction of Stein surfaces}, Ann. of Math. 148,
+p.619-693, 1998.
+
+
+
+\bibitem[GS99]{GS:KirbyCalculus}
+R. Gopf and A. Stipsicz, \textit{4-manifolds and Kirby Calculus}, Graduate Studies in Mathematics 20, Amer. Math. Society, Providence, RI, 1999.
+
+\bibitem[Gr85]{Gromov:JCurves}
+M. Gromov, \textit{Pseudoholomorphic curves in symplectic manifolds}, Invent. Math, Volume 82, p.307–347, 1985.
+
+
+\bibitem[G14]{Gutt:Normal}
+J. Gutt, \textit{Normal Forms for Symplectic Matrices}, Portugalia Mathematicae, vol. 71, p.109-139, 2014.
+
+
+
+\bibitem[Ha02]{Hatcher:AlgebraicTopology}
+A. Hatcher, \textit{Algebraic topology}, Cambridge University Press, Cambridge, 2002.
+
+\bibitem[HW]{HW:Cop}
+N. Higstons, N. Wahl, {\em Products and coproducts in string topology}, arXiv:1709.06839v1, 2017.
+
+\bibitem[Hi03]{Hind:Filling}
+R. Hind, \textit{Stein fillings of lens spaces}, Commun. Contemp. Math. 5, no. 6, p.967–982, 2003.
+
+\bibitem[Hof93]{Hofer:OTWeinstein}
+H. Hofer, \textit{Pseudoholomorphic curves in symplectizations with applications to the Weinstein conjecture in dimension three}, Inv. Math., Volume 114, p.515-563, 1993.
+
+
+\bibitem[HWZ96]{HWZ:Asymptotics}
+H. Hofer, K. Wysocki and E. Zehnder, \textit{Properties of pseudoholomorphic curves in symplectizations I: Asymptotics}, Ann. Inst. H. Poincar{`e} Anal. Non Lin{`e}aire 13, p.337–37, 1996.
+
+\bibitem[H00]{Honda:Tight1}
+K. Honda, \textit{On the classification of tight contact structures I}, Geom. Topol., Volume 4, Number 1, p.309-368, 2000.
+
+\bibitem[Hon00]{Honda:Tight2}
+K. Honda, \textit{On the classification of tight contact structures II}, J. Differential Geom., Volume 55, Number 1, p.83-143, 2000.
+
+\bibitem[Hon02]{Honda:OTSurgery}
+K. Honda, \textit{Gluing tight contact structures}, Duke Math. J.
+Volume 115, Number 3, p.435-478, 2002.
+
+\bibitem[HKM09]{HKM:ContactClass}
+K. Honda, W. Kazez, and G. Mati\'{c}, \textit{On the contact class in Heegaard Floer homology}, J. Differential Geom. Volume 83, Number 2, p.289-311, 2009.
+\end{comment}
+
+\bibitem[HH18]{HH:Bypass}
+K. Honda and H. Huang, \textit{Bypass attachments in higher-dimensional contact topology}, preprint, arXiv:1803.09142, 2018.
+
+\bibitem[HH19]{HH:Convex}
+K. Honda and H. Huang, \textit{Convex hypersurface theory in contact topology}, preprint, arXiv:1907.06025, 2019.
+
+\bibitem[HT22]{HT:Category}
+Ko Honda and Yin Tian, \textit{Contact categories of disks}, J. Symp. Geom., Vol. 20, 2022.
+
+\begin{comment}
+\bibitem[Hua13]{Huang:OTClassification}
+Y. Huang, \textit{A proof of the classification theorem of overtwisted contact structures via convex surface theory}, J. Symplectic Geom.
+Volume 11, Number 4, p.563-601, 2013.
+
+
+\bibitem[Hum97]{Hummel}
+C. Hummel, \textit{Gromov’s compactness theorem for pseudo-holomorphic curves}, Progress in Mathematics, 151, Birkh\"{a}user Verlag, Basel, 1997.
+
+\bibitem[Hut13]{Hutchings:QOnly}
+M. Hutchings, \textit{Rational SFT using only q variables}, blog post available at \url{https://floerhomology.wordpress.com/2013/04/23/rational-sft-using-only-q-variables/}, 2013.
+
+\bibitem[Hut14]{Hutchings:ECHNotes}
+M. Hutchings, \textit{Lecture Notes on Embedded Contact Homology}, in Contact and Symplectic Topology, Bolyai Society Mathematical Studies, vol 26, Springer, p.389-484, 2014.
+
+\bibitem[HS06]{HS:T3}
+M. Hutchings and M. Sullivan, \textit{Rounding corners of polygons and the embedded contact homology of $T^3$}, Geometry and Topology, Vol. 10, p. 169-266, 2006.
+
+
+\bibitem[HT07]{HT:GluingI}
+M. Hutchings and C. Taubes, \textit{Gluing pseudoholomorphic curves along branched covered cylinders I}, J. Symplectic Geom. 5, p.43–137, 2007.
+
+\bibitem[HT09]{HT:GluingII}
+M. Hutchings and C. Taubes, \textit{Gluing pseudoholomorphic curves along branched covered cylinders II}, J. Symplectic Geom. 7, p.29-133, 2009.
+
+\bibitem[Kar20]{Karlsson:Orientations}
+C. Karlsson, \textit{A note on coherent orientations for exact Lagrangian cobordisms}, Quantum
+Topol., 11(1), p.1–54, 2020.
+
+\bibitem[K87]{Kauffman}
+L. H. Kauffman, \textit{State models and the Jones polynomial}, Topology, Volume 26, Number 3, p.395–407, 1987.
+
+\bibitem[Ko00]{Khovanov}
+M. Khovanov, \textit{A categorification of the Jones polynomial}, Duke Math. J., Volume 101, Number 3, p.359-426, 2000.
+
+\bibitem[KM93]{KM:MilnorConj}
+P. Kronheimer and T. Mrowka. \textit{Gauge theory for embedded surfaces I}. Topology, 32, p.773–826, 1993.
+
+\bibitem[KLT10]{KLT:HFSW}
+C. Kutluhan, Y.-J. Lee, and C. Taubes, \textit{HF=HM I: Heegaard Floer homology and Seiberg-Witten Floer homology}, arXiv:1007.1979, 2010.
+
+\bibitem[La93]{Lang142}
+S. Lang, \textit{Real and functional analysis}, Graduate texts in mathematics 142, Springer, 1993.
+
+\bibitem[LW11]{LW:Torsion}
+J. Latschev and C. Wendl, \textit{Algebraic torsion in contact manifolds (with
+an appendix by M. Hutchings)}, Geom. Funct. Anal., Vol. 21, p.1144–1195, 2011.
+
+\bibitem[Li06]{Lipshitz:Cylindrical}
+R. Lipshitz. \textit{A cylindrical reformulation of Heegaard Floer homology}, Geometry and Topology, Vol. 10, p.955–1097, 2006.
+
+\bibitem[LOT18]{LOT:Bordered}
+R. Lipshitz, P. Ozsv{\'a}th, and D. Thurston, \textit{Bordered Heegaard Floer homology: Invariance and pairing}, Mem. Amer. Math. Soc. 254, no. 1216, 2018.
+
+\bibitem[L98]{Lisca:Nonfillable}
+P. Lisca, \textit{Symplectic fillings and positive scalar curvature}, Geom. Topol. 2, p.103-116, 1998.
+
+\bibitem[L08]{Lisca:Filling}
+P. Lisca, On symplectic fillings of lens spaces, Trans. Amer. Math. Soc. 360, no. 2, p.765–799, 2008.
+
+\bibitem[LS04]{LS:TightI}
+P. Lisca and A. I. Stipsicz, \textit{Ozsváth–Szábo invariants and tight contact three-manifolds I}, Geom. Topol., Volume 8, Number 2, p.925-945, 2004.
+
+\bibitem[LS06]{LS:ContactClassNotes}
+P. Lisca and A. I. Stipsicz, \textit{Notes on the Contact Ozsváth-Szabó Invariants}, Pacific J. Math, Volume 228, Number 2, p.277–295, 2006.
+
+\bibitem[L02]{Liu:Moduli}
+C.C.M. Liu, \textit{Moduli of J-holomorphic curves with Lagrangian boundary conditions and open Gromov-Witten invariants for an $\Circle$-equivariant pair}, Ph.D. thesis (Harvard University), arXiv:math.SG/0210257, 2002.
+
+\bibitem[Lo02]{Long:Index}
+Y. Long, \textit{Index theory for symplectic paths with applications}, volume 207 of
+Progress in Mathematics. Birkh\"{a}user Verlag, Basel, 2002.
+
+\bibitem[MNW13]{MNW13}
+P. Massot, K. Niederkr\"{u}ger, and C. Wendl, \textit{Weak and strong fillability of higher dimensional contact manifolds}, Invent. math. (2013), 192-287.
+
+\bibitem[M90]{McDuff:RationalRuled}
+D. McDuff, \text{The structure of rational and ruled symplectic 4-manifolds}, J. Amer. Math. Soc. 3, p.679–712, 1990.
+
+\bibitem[M91]{McDuff:Filling}
+D. McDuff, Symplectic manifolds with contact type boundaries, Invent. Math. 103, p.651–671, 1991.
+
+\bibitem[MS99]{MS:SymplecticIntro}
+D. McDuff and D. Salamon, \textit{Introduction to symplectic topology}, Second edition. Oxford Mathematical Monographs. The Clarendon Press, Oxford University Press, New York, 1998.
+
+\bibitem[MS04]{MS:Curves}
+D. McDuff and D. Salamon, \textit{J-holomorphic curves and symplectic topology}, American Mathematical Society, Providence, RI, 2004.
+
+\bibitem[MZ20]{MZ:Torsion}
+A. Moreno and Z. Zhou, \textit{A landscape of contact manifolds via rational SFT}, 	arXiv:2012.04182, 2020.
+
+\bibitem[N01]{Ng:Satellites}
+L. Ng, The Legendrian satellite construction, arXiv:math/0112105, 2001.
+
+\bibitem[N03]{Ng:ComputableInvariants}
+L. Ng, \textit{Computable Legendrian invariants}, Topology, Volume 42, p.55–82, 2003.
+
+\bibitem[N10]{Ng:RSFT}
+L. Ng, \textit{Rational symplectic field theory for Legendrian knots}, Invent. math., Volume 182, Issue 3, p.451–512, 2010.
+
+\bibitem[N14]{Ng:KCHIntro}
+L. Ng, \textit{A topological introduction to knot contact homology}, In Contact and Symplectic Topology, Bolyai Soc. Math. Stud. 26 (Springer, Berlin) 2014.
+
+\bibitem[N]{Ng:Software}
+L. Ng et al., \textit{Programs and packages}, \url{https://services.math.duke.edu/~ng/math/programs.html}.
+
+\bibitem[NR13]{NR:Helix}
+L. Ng and D. Rutherford, \textit{Satellites of Legendrian knots and representations of the Chekanov–Eliashberg algebra}, Algebr. Geom. Topol., Volume 13, Number 5, p.3047-3097, 2013.
+
+\bibitem[N06]{N:Plastik}
+Klaus Niederkr\"{u}ger, \textit{The plastikstufe -- a generalization of the overtwisted disk to higher dimensions}, Algebr. Geom. Topol. 6, p.2473–2508, 2006.
+
+
+\bibitem[O04]{Oancea:Survey}
+A. Oancea, \textit{A survey of Floer homology for manifolds with contact type boundary or symplectic homology}, Ensaios Mat., 7, p.51–91, 2004.
+
+\bibitem[Oh96]{Oh:LagPert}
+Y.G. Oh, \textit{Fredholm theory of holomorphic discs under the perturbation of boundary conditions}, Math. Z., Vol. 222, p.505–520, 1996.
+
+\bibitem[OO05]{OO:Filling} 
+H. Ohta and K. Ono, \textit{Simple singularities and symplectic fillings}, J. Differential
+Geom. 69, no. 1, p.1–42, 2005.
+
+\bibitem[O05]{Ozbagci:Stabilization}
+B. Ozbagci, \textit{A note on contact surgery diagrams}, Int. J. Math., Volume 16, Number 1, p.87-99, 2005.
+
+\bibitem[O09]{Ozbagci:CotangentBundle}
+B. Ozbagci, \textit{Stein and Weinstein structures on disk cotangent bundles of surfaces}, Archiv der Mathematik, Volume 113, Issue 6, p.661–670, 2019.
+
+\bibitem[OS04]{OS:SurgeryBook}
+B. Ozbagci and A. I. Stipsicz, \textit{Surgery on contact 3-manifolds and Stein surfaces}, Bolyai Society Mathematical Studies,Springer-Verlag, Volume 13, 2004.
+
+\bibitem[OzvSz04]{OS:HF}
+P. Ozsv{\'a}th and Z. Szab{\'o}, \textit{Holomorphic disks and topological invariants for closed three-manifolds}, Ann. of Math. (2) 159, p.1027–1158, 2004.
+
+\bibitem[OzvSz05]{OS:ContactClass}
+P. Ozsv{\'a}th and Z. Szab{\'o}, \textit{Heegaard Floer homology and contact structures}, Duke Math. J. 129, p.39–61, 2005.
+
+\bibitem[P12]{Pardon:HFLecture}
+J. Pardon, \textit{Obstruction bundles and counting holomorphic disks in Heegaard Floer homology}, lecture at the Symplectic and Low Dimensional Topologies in Interaction workshop at the Simons Center for Geometry and Physics, \url{http://scgp.stonybrook.edu/video_portal/video.php?id=490}, 2012.
+
+\bibitem[Pard19]{Pardon:Contact}
+J. Pardon, \textit{Contact homology and virtual fundamental cycles}, J. Amer. Math. Soc. 32, no. 3, p.825-919, 2019.
+
+\bibitem[Park05]{Parker:Thesis}
+B. Parker, \textit{Holomorphic curves in Lagrangian torus fibrations}, Ph.D thesis, Stanford University, 2005.
+
+\bibitem[Pla07]{Olga:CombinatorialCHF}
+O. Plamenevskaya, \textit{A combinatorial description of the Heegaard Floer contact invariant},
+Algebr. Geom. Topol. 7, p.1201–1209, 2007.
+
+\bibitem[Ra10]{Ras:MilnorConj}
+J. Rasmussen, \textit{Khovanov homology and the slice genus}, Invent. math., volume 182, p.419–447, 2010.
+
+\bibitem[Ro90]{Rolfsen}
+D. Rolfsen, \textit{Knots and links} (Corrected reprint of the 1976 original), Mathematics Lecture Series, Vol. 7, Publish or Perish Inc., Houston, TX, 1990.
+
+
+\bibitem[RS93]{RS:Index}
+J. Robbin and D. Salamon, \textit{The Maslov index for paths}, Topology 32, Number 4, p.827–844, 1993.
+
+
+\bibitem[RS01]{RS:Strips}
+J. Robbin and D. Salamon, \textit{Asymptotic behavior of holomorphic strips}, Ann. Inst. H. Poincar\'{e} Anal. Non Lin\'{e}aire, p.573–612, 2001.
+
+
+\bibitem[Ro19]{Rooney:ECH}
+J. Rooney, \textit{Cobordism maps in embedded contact homology}, arXiv:1912.01048, 2019.
+
+
+\bibitem[Ru97]{Rudolph}
+L. Rudolph, \textit{The slice genus and the Thurston–Bennequin invariant of a knot}, Proc. Amer. Math. Soc., Volume 125, p.3049–3050, 1997.
+
+\bibitem[Sa99]{Salamon:HamtonianLectures}
+D. Salamon, \textit{Lectures on Floer homology}. Symplectic geometry and topology (Park City, UT, 1997), 143–229, IAS/Park City Math. Ser., 7, Amer. Math. Soc., Providence, RI, 1999.
+
+
+\bibitem[SW10]{SarkarWang}
+S. Sarkar and J. Wang \textit{An algorithm for computing some Heegaard Floer homologies}, Ann Math 171, p.1213–1236, 2010.
+
+
+\bibitem[Sc93]{Schwarz:Morse}
+M. Schwarz, \textit{Morse homology}, Progress in Mathematics, vol. 111, Birkh{\"a}user, Basel, 1993
+
+\bibitem[Sc95]{Schwarz:Thesis}
+M. Schwarz, \textit{Cohomology operations from $\Circle$ cobordisms in Floer homology}, PhD thesis, ETH Zurich, 1995.
+
+
+\bibitem[Se07]{BiasedSH}
+P. Seidel, \textit{A biased view of symplectic cohomology}, arXiv:math/0704.2055, 2007.
+
+\bibitem[Si19]{Siegel:RSFT}
+K. Siegel, \textit{Higher symplectic capacities}, arXiv:1902.01490, 2019
+
+\bibitem[S08]{Siefring:Asymptotics}
+R. Siefring, \textit{Relative asymptotic behavior of pseudoholomorphic half-cylinders}, Comm. Pure
+Appl. Math. 61, p.1631–1684, 2008.
+
+\bibitem[S13]{Sivek:NoAugs}
+S. Sivek, \textit{The contact homology of Legendrian knots with maximal
+Thurston-Bennequin invariant}, J. Symp. Geom., Vol. 11, p.167–178, 2013.
+
+\bibitem[S]{Sivek:Code}
+S. Sivek, \textit{lch.sage}, software available at \url{https://www.ma.imperial.ac.uk/~ssivek/code/lch.sage}.
+
+\bibitem[Sm62]{Smale:HCobordism}
+S. Smale, \textit{On the structure of manifolds}, Amer. Journ. Math., Number 3, p.387-399, 1962.
+
+\bibitem[Su05]{Sullivan:Coproduct}
+D. Sullivan, \textit{Sigma models and string topology in Graphs And Patterns}, in Mathematics And Theoretical
+Physics: Proceedings Of The Stony Brook Conference On Graphs And Patterns In Mathematics And Theoretical Physics, Dedicated to Dennis Sullivan’s 60th Birthday Proceedings of Symposia in Pure Mathematics,
+American Mathematical Society, 2005.
+
+\bibitem[T97]{Traynor:Helix}
+L. Traynor, \emph{Legendrian circular helix links}, Mathematical Proceedings of the Cambridge Philosophical Society 122, p.301-314, 1997.
+
+
+\bibitem[V15]{Vaugon:Bypass}
+A. Vaugon, \textit{Reeb periodic orbits after a bypass attachment}, Ergod. Th. Dynam. Sys. 35, p. 615-672, 2015.
+
+\bibitem[V99]{Viterbo:SH}
+C. Viterbo, \textit{Functors and computations in Floer homology with applications, Part I}, Geom.
+Funct. Anal. 9, p.985–1033, 1999.
+
+
+\bibitem[W15]{Wand:LegendrianSurgery}
+A. Wand, \textit{Tightness is preserved by Legendrian surgery}, Ann. of Math., Volume 128, Issue 2, p.723-738, 2015.
+
+
+\bibitem[Wa83]{Warner}
+F. W. Warner, \textit{Foundations of differentiable manifolds and Lie groups}, Graduate Texts in Mathematics 94, Springer-Verlag, 1983.
+
+\bibitem[Wei91]{Weinstein:Handles}
+A. Weinstein, \textit{Contact surgery and symplectic handlebodies}, Hokkaido Math. J., Vol. 20, p.241-251, 1991.
+
+\bibitem[Wen10a]{Wendl:Automatic}
+C. Wendl, \textit{Automatic transversality and orbifolds of punctured holomorphic curves in dimension four}, Comment. Math. Helv. 85, no. 2, p.347-407, 2010.
+
+\bibitem[Wen10b]{Wendl:OB}
+C. Wendl, \textit{Open book decompositions and stable Hamiltonian structures}, Expo. Math., Vol. 28, p.187-199, 2010.
+
+\bibitem[Wen10c]{Wendl:Foliations}
+C. Wendl, \textit{Strongly fillable contact manifolds and J-holomorphic foliations}, Duke Math. J., Volume 151, Number 3, p.337-384, 2010.
+
+\bibitem[Wen10]{Wendl:SHSurvey}
+C. Wendl, \textit{A beginners overview of symplectic homology}, Lecture notes available at \url{https://www.mathematik.hu-berlin.de/~wendl/pub/SH.pdf}
+
+\bibitem[Wen13]{Wendl:Torsion}
+C. Wendl, \textit{A hierarchy of local symplectic filling obstructions for contact 3-manifolds}, Duke Math. J., Vol. 162, p.2197–2283, 2013.
+
+\bibitem[Wen13]{Wendl:NonExact}
+C. Wendl, \textit{Non-exact symplectic cobordisms between contact 3-manifolds}. Journal of Differential Geometry, Volume 95, p.121–182, 2013.
+
+\bibitem[Wen15]{Wendl:Signs}
+C. Wendl, \textit{Signs (or how to annoy a symplectic topologist}, blog post available at \url{https://symplecticfieldtheorist.wordpress.com/2015/08/23/signs-or-how-to-annoy-a-symplectic-topologist/}, 2015.
+
+
+\bibitem[Wen16]{Wendl:SFTNotes}
+C. Wendl, \textit{Lectures on Symplectic Field Theory}, arXiv:1612.01009, 2016.
+
+\bibitem[Wi82]{Witten:Morse}
+E. Witten, \textit{Supersymmetry and Morse theory}, J. Differential Geom. 17, p.661-692, 1982.
+
+\bibitem[Y06]{Yau:VanishingCH}
+M. L. Yau, \emph{Vanishing of the contact homology of overtwisted contact 3-
+manifolds (with an appendix by Y. Eliashberg)}, Bull. Inst. Math. Acad. Sin. 1, p.211–229, 2006.
+\end{comment}
+
+\end{thebibliography}
+
+
+\end{document}
