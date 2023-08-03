@@ -1,0 +1,12 @@
+*.bbl
+*.blg
+*.out
+*.aux
+*.brf
+*.gz
+*.log
+*.snm
+*.toc
+*-converted-to.pdf
+zipit*
+.DS_Store

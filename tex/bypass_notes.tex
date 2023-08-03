@@ -211,23 +211,24 @@
 \begin{document}
 
 \begin{abstract}
-Here we take notes on \cite{HH:Bypass} and translate some of the key terminology into the language of double positive factorizations (DPFs).
+Here we translate some of the key terminology from \cite{HH:Bypass} into the language of open books and double positive factorizations (DPFs).
 \end{abstract}
 
 \maketitle
 
 Throughout $\hypersurface$ is a Weinstein convex hypersurface with decomposition $\posNegRegion, \divSet$. We'll take $\dim \divSet = 2n-1, \dim \hypersurface = 2n$.
 
-Here is our convention for building Lefschetz fibrations: Start with a Lefschetz fibration for $W \times \disk \rightarrow \disk$ inducing an open book on the boundary whose page is $W$ and whose monodromy is trivial. Say that the whose mapping torus portion of the open book is $W \times \Circle$. If we attach a Weinstein handle at some $\Leg \subset W \times \{0\}$ then the Lefschetz fibration extends over the surgered Weinstein manifold so that the core of the handle becomes a Lefschetz thimble. The surgery locus in the boundary is $N_{W}(\Leg) \times [0, 3\epsilon]$ and the boundary of the cocore is $\Leg \times \{0\} \simeq \Leg \times \{3\epsilon\}$. Here $N_{W}(\Leg_{k})$ is a standard Weinstein neighborhood of $\Leg$ in $W$. The $\simeq$ is a Legendrian isotopy coming from our ability to slide boundary of the cocore through the handle.
+Here is our convention for building Lefschetz fibrations: Start with a trivial Lefschetz fibration for $\pi: W \times \disk \rightarrow \disk$ (for which $\pi$ is the projection onto the $\disk$ factor) an open book on the boundary whose page is $W$ and whose monodromy is trivial. Say that the whose mapping torus portion of the open book is $W \times \Circle$. If we attach a Weinstein handle at some $\Leg \subset W \times \{0\}$ then the Lefschetz fibration extends over the surgered Weinstein manifold so that the core of the handle becomes a Lefschetz thimble. The surgery locus in the boundary is $N_{W}(\Leg) \times [0, 3\epsilon]$ and the boundary of the cocore is $\Leg \times \{0\} \simeq \Leg \times \{3\epsilon\}$. Here $N_{W}(\Leg_{k})$ is a standard Weinstein neighborhood of $\Leg$ in $W$. The $\simeq$ is a Legendrian isotopy coming from our ability to slide boundary of the cocore through the handle.
 
 To build up to a general Lefschetz fibration, we attach $k$ Weinstein handles to the neighborhoods
 \begin{equation*}
 N_{W}(\Leg_{k}) \times \left[\frac{i-1}{k}, \frac{i-1}{k} + 3\epsilon  \right] \subset W \times \Circle, \quad \Circle = \R / \Z
 \end{equation*}
-using the $4\epsilon$ neighborhoods with $\epsilon$ small. With this ordering convention the monodromy of the open book on the boundary is
+using the $3\epsilon$ neighborhoods with $\epsilon$ small. With this ordering convention the monodromy of the open book on the boundary is
 \begin{equation*}
 \tau_{\Leg_{k}} \circ \cdots \circ \tau_{\Leg_{1}}: W \rightarrow W.
 \end{equation*}
+We say that the Lefschetz fibration is determined by $\thiccLeg = (\Leg_{1} \dots, \Leg_{k})$.
 
 For a double positive factorization (DPF), we have $\posNegRegion$ determined by Lefschetz fibrations with fiber $W$ and ordered collections of (framed) Legendrian spheres $\thiccPosNegLeg = (\posNegLeg_{i})_{i=1}^{k^{\pm}}, \posNegLeg_{i} \subset W$. We identify with boundaries when we have an identifications of the fibers of the Lefschetz fibrations on the $\posNegRegion$ with a fixed $W$ and
 \begin{equation*}
@@ -264,7 +265,7 @@ We'll always think of $\posNegLeg$ as being Legendrian spheres sitting on a sing
 
 One key observation is that we have conjugacy relations and a braid relation when $\posNegLeg$ intersect at a single point in $W$,
 \begin{equation*}
-\tau_{\tau_{\posLeg}\negLeg} = \tau_{\posLeg} \circ \tau_{\negLeg} \circ \tau_{\posLeg}^{-1}, \quad \tau_{\posLeg}\tau_{\negLeg}\tau_{\posLeg} \simeq \tau_{\negLeg}\tau_{\posLeg}\tau_{\negLeg}.
+\tau_{\tau_{\posLeg}\negLeg} = \tau_{\posLeg} \circ \tau_{\negLeg} \circ \tau_{\posLeg}^{-1}, \quad \tau_{\posLeg}\circ\tau_{\negLeg}\circ\tau_{\posLeg} \simeq \tau_{\negLeg}\circ \tau_{\posLeg}\circ\tau_{\negLeg}.
 \end{equation*}
 Another observation is that if $\posLeg$ is an unknot, then $\negLeg \uplus \posLeg$ will be loose in the ambient contact manifold. In the low dimensional case, $\dim \divSet = 3$, this will be $\negLeg$ both positively and negatively stabilized.
 
@@ -284,37 +285,103 @@ If we attach a bypass to $[-\epsilon, 0] \times \hypersurface$ at $\{ 0 \} \time
 
 \subsubsection{Translation}
 
-In the DPF picture, we assume that the $\posNegLeg$ are the $\posNegLeg_{1} \in \thiccPosNegLeg$ so that
+\begin{lemma}
+Suppose that the convex hypersurface is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give bypass attachment data. The result of the bypass can be described by a DPF $\thiccPosNegLeg_{b}$ given by
 \begin{equation*}
-\negLeg \uplus \posLeg = \tau_{\posLeg_{1}}\negLeg_{1}.
+\thiccPosLeg_{b} = (\tau_{\posLeg_{1}}^{2}\negLeg_{1}, \posLeg_{2}, \dots, \posLeg_{k^{+}}), \quad \thiccNegLeg_{b} = (\tau_{\posLeg_{1}}\negLeg_{1}, \negLeg_{2}, \dots, \negLeg_{k^{-}})
 \end{equation*}
-If we are given a Lefschetz fibration determined by a $\thiccLeg$, then cutting out the disk $\Lag_{1}$ whose boundary is $\Leg_{1}$ amounts to replacing $\thiccLeg = (\Leg_{1}, \dots, \Leg_{k})$ with $(\Leg_{2}, \dots, \Leg_{k})$.
+\end{lemma}
 
-Let's assume that the surgery loci for the $\posNegLeg_{1}$ are within $[\epsilon, 2\epsilon] \times W$. Since we use the $\{ 0 \} \times W$ to identify the fibers of the fibration, let's say that $\negLeg_{1} \uplus \posLeg_{1}$ sits on $\{\epsilon\} \times W$ and that there are no surgery loci in $[0, \epsilon] \times W$.
-
-From the positive region description of $\divSet$, we perform add a negative Dehn twist for the contact $+1$ surgery at $\{ 0 \} \times W$, and have the Weinstein handle attachment locus at $\{ \epsilon \} \times W$. As in step (3) of the definition, we slide the $+1$ surgery locus up through the $\{ \epsilon \} \times W$. Now the $+1$ surgery occurs along $\tau_{\negLeg \uplus \posLeg}\posLeg$ and we compute
+Let's first verify that the monodromies of the $\thiccPosNegLeg_{b}$ agree as a sanity check:
 \begin{equation*}
 \begin{aligned}
-\left(\tau_{\tau_{\negLeg \uplus \posLeg}\posLeg}\right)^{-1} &= \left(\tau_{\negLeg \uplus \posLeg} \circ \tau_{\posLeg} \circ \tau_{\negLeg \uplus \posLeg}^{-1} \right)^{-1}= \left(\tau_{\posLeg}\tau_{\negLeg}\tau_{\posLeg}^{-1}\tau_{\posLeg}\tau_{\posLeg}^{-1}\tau_{\negLeg}^{-1}\tau_{\posLeg}\right)^{-1}\\
-\end{aligned}
-\end{equation*}
-
-We use the pushoff directions ($F^{\pm}$) to determine the order in which twists are added to the modnodromies. To follow step (2) in the definition the monodromies become modified as
-\begin{equation*}
-\begin{aligned}
-\tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{1}} &\mapsto \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1} \circ \tau_{\posLeg_{1}}\\
-\tau_{\negLeg_{k}} \circ \cdots \circ \tau_{\negLeg_{1}} &\mapsto \tau_{\negLeg_{k}} \circ \cdots \circ \tau_{\negLeg_{1}}^{-1} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\negLeg_{1}}.
-\end{aligned}
-\end{equation*}
-In the first row the $\tau_{\posLeg_{1}}^{-1}$ is added below the new surgery locus and in the second row the $\tau_{\negLeg_{1}}^{-1}$ is added above. These simplify to
-\begin{equation*}
-\begin{aligned}
-\tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{1}} &\mapsto \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}}\\
-\tau_{\negLeg_{k}} \circ \cdots \circ \tau_{\negLeg_{1}} &\mapsto \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{1}}^{-1} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}.
+\tau_{\thiccPosLeg_{b}} &= \tau_{\posLeg_{k^{+}}} \circ \cdots \circ \tau_{\posLeg_{2}} \circ \tau_{\tau_{\posLeg_{1}}^{2}\negLeg_{1}} = \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{2}} \circ \tau_{\posLeg_{1}}^{2} \circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-2} \\
+&= \tau_{\thiccPosLeg} \circ \tau_{\posLeg_{1}} \circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-2} = \tau_{\thiccPosLeg} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
+&= \tau_{\thiccNegLeg} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}  = \tau_{\thiccNegLeg} \circ \tau_{\tau_{\negLeg_{1}}^{-1}\posLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
+&= \tau_{\thiccNegLeg} \circ \tau_{\negLeg_{1}}^{-1}\circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
+&= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\negLeg_{1}} \circ \tau_{\negLeg_{1}}^{-1}\circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
+&= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
+&= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} = \tau_{\thiccNegLeg_{b}}
 \end{aligned}
 \end{equation*}
 
 
+\begin{figure}[h]
+\hspace{-10mm}
+\begin{overpic}[scale=.5]{ob_bypass.eps}
+\put(100, 0){$\{\epsilon\} \times W$}
+\put(100, 12){$\{2\epsilon\} \times W$}
+\put(100, 24){$\{3\epsilon\} \times W$}
+\put(45, -5){$\partial \posRegion_{1}$}
+\put(85, -5){$\partial \negRegion_{1}$}
+\put(14, 21){$\negLeg_{1}$}
+\put(-1, 15){$\posLeg_{1}$}
+\put(32, 0){$(+1)$}
+\put(32, 12){$(-1)$}
+\put(32, 24){$(-1)$}
+\put(70, 0){$(-1)$}
+\put(70, 12){$(+1)$}
+\put(70, 24){$(-1)$}
+\end{overpic}
+\vspace{5mm}
+\caption{Depiction of bypass surgeries in an open book.}
+\label{Fig:OBBypass}
+\end{figure}
+
+Now to prove the lemma we apply the definition of the bypass. Suppose that the $\posNegLeg_{1}$ lie on $\{ 3\epsilon \} \times W$. The cocores of the surgery handles can then be pushed down to $\{2 \epsilon\} \times W$ as shown in the left-hand side of Figure \ref{Fig:OBBypass} so that they share a single transverse intersection.
+
+Working out $\thiccNegLeg_{b}$ is very easy. According to the definition of the bypass, we must perform a contact $+1$ surgery on a copy of $\negLeg_{1}$ placed slightly above the new surgery locus $\negLeg_{1} \uplus \posLeg_{1} = \tau_{\posLeg_{1}}\negLeg_{1}$ in the boundary of $\partial \negRegion_{1}$. This is as shown in the left-hand side of Figure \ref{Fig:OBBypass}. The $\pm 1$ surgeries along the $\negLeg_{1}$ at heights $2\epsilon$ and $3\epsilon$ cancel, so that we are only left with the new $-1$ surgery locus.
+
+To describe the boundary of the new positive region $\posRegion_{1}$ we must perform a contact $-1$ surgery along $\tau_{\posLeg_{1}}\negLeg_{1}$ (at height $2\epsilon$) along with a contact $+1$ surgery slightly below it, say at $\{\epsilon\} \times W$. This is as depicted in the center row of Figure \ref{Fig:OBBypass}. We want to make the $\pm 1$ surgeries on $\posLeg_{1}$ cancel. To that end, we handle-slide $\negLeg_{1} \uplus \posLeg_{1} = \tau_{\posLeg_{1}}\negLeg_{1}$ (currently at height $2\epsilon$) down through the surgery locus at $\{\epsilon\} \times  \posLeg_{1}$. The before and after pictures are as shown in the left and right columns of Figure \ref{Fig:OBBypassSlide}, respectively. Because we are flowing down through a $+1$ surgery handle, the effect is a positive Dehn twist: We obtain $\tau_{\posLeg_{1}}^{2}\negLeg_{1}$ on the bottom (say, at height $\epsilon$) and canceling $\pm1$ surgeries (say at heights $2\epsilon$, $3\epsilon$). Deleting the canceling $\pm 1$ surgeries, we are left with $\thiccPosLeg_{b}$ as claimed.
+
+\begin{figure}[h]
+\begin{overpic}[scale=.5]{ob_bypass_slide.eps}
+\put(-10, 0){$(+1)$}
+\put(-10, 19){$(-1)$}
+\put(-10, 38){$(-1)$}
+\put(52, 0){$(-1)$}
+\put(52, 19){$(+1)$}
+\put(52, 38){$(-1)$}
+\end{overpic}
+\vspace{5mm}
+\caption{Handle-sliding the new $-1$ surgery locus on $\partial \posRegion_{1}$ down through the new $+1$ surgery locus. On the bottom left, we see $\tau_{\posLeg_{1}}^{2}\negLeg$ sitting on $\{ \epsilon \} \times W$.}
+\label{Fig:OBBypassSlide}
+\end{figure}
+
+\section{Stabilization, unknots, and obviously overtwisted bypasses}
+
+Suppose that we have a Lefschetz fibration $\pi$ (whose total space has dimension $2n$) determined by some $\thiccLeg$ with non-singular fiber $W$ (of dimension $2n-2 > 0$). Write $\divSet$ for the boundary of the total space of $\pi$.
+
+Suppose that $W$ admits a Lefschetz fibration $\pi_{W}: W \rightarrow \disk$ for which we have a thimble $D \subset W$ with Legendrian boundary $\partial D \subset \partial W$. When $\dim W = 2$ this imposes no restrictions on $D$, other than it is a Legendrian-realized arc. We may attach a $\ind = n-1, \dim = 2n-2$ Weinstein handle $H_{D}$ to $W$ along $\partial D$. The union of the core Lagrangian disk $C_{D}$ of $H_{D}$ together with $D$ forms a Lagrangian sphere $\Leg_{D}$ in the surgered Weinstein manifold
+\begin{equation*}
+\Leg_{D} := C_{D} \cup D \subset W_{D} := W \cup H_{D}.
+\end{equation*}
+The $\Leg_{i} \subset W$ then determine $\Leg_{i} \subset W_{D}$ via the natural inclusion $W \subset W_{D}$. It follows that $\Leg_{D}$ intersects to cocore Lagrangian disk $C^{\perp}_{D}$ of $H_{D}$ exactly once,
+\begin{equation*}
+\#(\Leg_{D} \cap C^{\perp}_{D}) = 1.
+\end{equation*}
+
+Adding a $\ind=n, \dim=2n$ Weinstein handle $H_{\Leg_{D}}$ to the total space of $\pi$ then yields a \emph{stabilization} of $\pi$. It is determined by a tuple of Lagrangians in $W_{D}$ which we may view as Legendrians in the boundary of the total space of the new Lefschetz fibration,
+\begin{equation*}
+\thiccLeg_{s} = (\Leg_{D}, \Leg_{1}, \dots, \Leg_{k})
+\end{equation*}
+The boundary of the new Lefschetz fibration, $\pi_{s}$ is then supported by an open book which is a positive stabilization of the open book induced by $\pi$. Hence the boundary of the total space is again $\divSet$ with the same contact structure. Write $\Lag_{\Leg_{D}}$ for the Lefschetz thimble in the total space of $\pi_{s}$ for which
+\begin{equation*}
+\partial \Lag_{\Leg_{D}} = \Leg_{D} \subset \divSet
+\end{equation*}
+is Legendrian.
+
+\begin{lemma}
+$\Leg_{D}$ is a Legendrian unknot in $\divSet$ and $\Lag_{\Leg_{D}}$ is a standard bounding disk.
+\end{lemma}
+
+\begin{proof}
+In the case that $W = \disk^{2n-2}$ with $\pi_{W} = \sum z_{j}^{2}$, we obtain $W_{D} = \disk^{\ast}\sphere^{n-1}$ with $\Leg_{D} \subset W_{D}$ the zero section. The total space of $\pi_{s}$ is then $\disk^{2n}$ with $\Leg_{D}$ a standard Legendrian unknot bounding a standard Lagrangian disk.
+\end{proof}
+
+\begin{edits}
+Finish writing this proof. The idea is to build up the total space of $\pi_{s}$ from the basic example. The delicate point is that we need to ensure that the disk remains standard.
+\end{edits}
 
 \begin{thebibliography}{}
 \begin{comment}
