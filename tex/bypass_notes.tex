@@ -218,7 +218,7 @@ Here we translate some of the key terminology from \cite{HH:Bypass} into the lan
 
 Throughout $\hypersurface$ is a Weinstein convex hypersurface with decomposition $\posNegRegion, \divSet$. We'll take $\dim \divSet = 2n-1, \dim \hypersurface = 2n$.
 
-Here is our convention for building Lefschetz fibrations: Start with a trivial Lefschetz fibration for $\pi: W \times \disk \rightarrow \disk$ (for which $\pi$ is the projection onto the $\disk$ factor) an open book on the boundary whose page is $W$ and whose monodromy is trivial. Say that the whose mapping torus portion of the open book is $W \times \Circle$. If we attach a Weinstein handle at some $\Leg \subset W \times \{0\}$ then the Lefschetz fibration extends over the surgered Weinstein manifold so that the core of the handle becomes a Lefschetz thimble. The surgery locus in the boundary is $N_{W}(\Leg) \times [0, 3\epsilon]$ and the boundary of the cocore is $\Leg \times \{0\} \simeq \Leg \times \{3\epsilon\}$. Here $N_{W}(\Leg_{k})$ is a standard Weinstein neighborhood of $\Leg$ in $W$. The $\simeq$ is a Legendrian isotopy coming from our ability to slide boundary of the cocore through the handle.
+Here is our convention for building Lefschetz fibrations: Start with a trivial Lefschetz fibration for $\pi: W \times \disk \rightarrow \disk$ (for which $\pi$ is the projection onto the $\disk$ factor) an open book on the boundary whose page is $W$ and whose monodromy is trivial. Say that the whose mapping torus portion of the open book is $W \times \Circle$. If we attach a Weinstein handle at some $\Leg \subset W \times \{0\}$ then the Lefschetz fibration extends over the surgered Weinstein manifold so that the core of the handle becomes a Lefschetz thimble. The surgery locus in the boundary is $N_{W}(\Leg) \times [0, 3\epsilon]$ and the boundary of the cocore is $\Leg \times \{0\} \simeq \Leg \times \{3\epsilon\}$. Here $N_{W}(\Leg_{k})$ is a standard Weinstein neighborhood of $\Leg$ in $W$. The $\simeq$ is a Legendrian isotopy coming from our ability to slide the boundary of the cocore through the handle.
 
 To build up to a general Lefschetz fibration, we attach $k$ Weinstein handles to the neighborhoods
 \begin{equation*}
@@ -240,9 +240,7 @@ Specifically the identification of the monodromies allows us identify the mappin
 \end{equation*}
 From the open book picture, the mapping tori make up all of the $\partial \posNegRegion$ except for the binding. The identification trivially extends over the binding since it is $\partial W$.
 
-\section{Legendrian sum and bypasses}
-
-\subsection{Legendrian sum}
+\section{Legendrian sum}
 
 Given a pair $\posNegLeg$ of Legendrians in a contact manifold $\divSet$ intersecting $\xi$-transversely at a single point, we'll define the Legendrian sum using the Lagrangian projection formulation from \cite{HH:Bypass}.
 
@@ -263,14 +261,7 @@ F^{\pm\epsilon}(\negLeg \uplus \posLeg) := \Flow_{\partial_{t}}^{\pm \epsilon}(\
 
 We'll always think of $\posNegLeg$ as being Legendrian spheres sitting on a single page $W$ of an open book for $\divSet$. We'll always work far from the binding so that we can assume that each $t = t_{0}$ slice of $[-2\epsilon, 2\epsilon] \times W$ also sits in a page. After a slight perturbation of the open book the $(\negLeg \uplus \posLeg)^{\pm \epsilon}$ can be assumed to sit on pages as well.
 
-One key observation is that we have conjugacy relations and a braid relation when $\posNegLeg$ intersect at a single point in $W$,
-\begin{equation*}
-\tau_{\tau_{\posLeg}\negLeg} = \tau_{\posLeg} \circ \tau_{\negLeg} \circ \tau_{\posLeg}^{-1}, \quad \tau_{\posLeg}\circ\tau_{\negLeg}\circ\tau_{\posLeg} \simeq \tau_{\negLeg}\circ \tau_{\posLeg}\circ\tau_{\negLeg}.
-\end{equation*}
-Another observation is that if $\posLeg$ is an unknot, then $\negLeg \uplus \posLeg$ will be loose in the ambient contact manifold. In the low dimensional case, $\dim \divSet = 3$, this will be $\negLeg$ both positively and negatively stabilized.
-
-
-\subsection{Bypass}
+\section{Bypasses for DPFs}
 
 \begin{defn}
 Bypass attachment data consists of a tuple $(\posNegLeg, \posNegLag)$ for which $\posNegLeg$ is a pair of Legendrians intersecting in a single point and $\posNegLag$ are Lagrangian slice disks in the $\posNegRegion$ for the $\posNegLeg$.
@@ -283,9 +274,17 @@ If we attach a bypass to $[-\epsilon, 0] \times \hypersurface$ at $\{ 0 \} \time
 \item The boundaries of the $\posNegRegion_{1}$ are identified by the contactomorphism $\partial \posRegion_{1} \rightarrow \partial \negRegion_{1}$ obtained by sliding $F^{-\epsilon}\posLeg$ up over $(\negLeg \uplus \posLeg)$ to $F^{\epsilon}\negLeg$.
 \ee
 
+To perform a \emph{trivial bypass}, we require that both $\posNegLeg$ are unknots with the $\posNegLag$ being the standard disk fillings with $\posLeg$ below $\negLeg$.
+
+We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obviously overtwisted bypass}. This means that $\posLeg$ is the standard unknot, $\posLag$ is the standard Lagrangian disk, and $\posLeg$ is above $\negLeg$. The definition ensures that the convex hypersurface resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}.
+
+\begin{q}
+Is every convex hypersurface with an overtwisted neighborhood the result of an obviously overtwisted bypass?
+\end{q}
+
 \subsubsection{Translation}
 
-\begin{lemma}
+\begin{lemma}\label{Lemma:OBBypass}
 Suppose that the convex hypersurface is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give bypass attachment data. The result of the bypass can be described by a DPF $\thiccPosNegLeg_{b}$ given by
 \begin{equation*}
 \thiccPosLeg_{b} = (\tau_{\posLeg_{1}}^{2}\negLeg_{1}, \posLeg_{2}, \dots, \posLeg_{k^{+}}), \quad \thiccNegLeg_{b} = (\tau_{\posLeg_{1}}\negLeg_{1}, \negLeg_{2}, \dots, \negLeg_{k^{-}})
@@ -301,7 +300,7 @@ Let's first verify that the monodromies of the $\thiccPosNegLeg_{b}$ agree as a 
 &= \tau_{\thiccNegLeg} \circ \tau_{\negLeg_{1}}^{-1}\circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
 &= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\negLeg_{1}} \circ \tau_{\negLeg_{1}}^{-1}\circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
 &= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
-&= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} = \tau_{\thiccNegLeg_{b}}
+&= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} = \tau_{\thiccNegLeg_{b}}.
 \end{aligned}
 \end{equation*}
 
@@ -348,6 +347,55 @@ To describe the boundary of the new positive region $\posRegion_{1}$ we must per
 \label{Fig:OBBypassSlide}
 \end{figure}
 
+\section{An obviously overtwisted example}
+
+Let's describe an example bypass on $\sphere^{2n}$ starting with $\posNegRegion = \disk^{2n}$. So our convex hypersurface is the boundary of a contact $\dim=2n+1$ Darboux disk.
+
+For the Lefschetz fibrations on $\disk^{2n}$ (on which we take standard complex coordinates $z_{k}$) we can use the function $\pi = \delta + z_{1}^{3} + \sum_{2}^{n} z_{k}^{2}$ with $\delta \in \C \setminus 0$ small. Then a regular fiber $W = W^{2n-2}$ will be a plumbing of two cotangent bundles of spheres $x, y$ and the monodromy is $\tau_{y}\tau_{x}$. So we can say that 
+\begin{equation*}
+\thiccPosNegLeg = (\Lambda_{1}, \Lambda_{2}) = (x, y)
+\end{equation*}
+for both $\pm$. Both of the $x$ and $y$ are unknots in $\disk^{2n}$. According to our conventions, $y$ sits slightly above $x$ in a thickened neighborhood of $W$.
+
+\begin{figure}[h]
+\begin{overpic}[scale=.25]{front_surface_matching_path.eps}
+\end{overpic}
+\caption{In each subfigure we see $x$ in blue and $y$ in red. On the left they are depicted as Legendrians in the front projection with the skeleton of $W$ in black as in \cite{Avdek:ContactSurgery}. Here $x$ and $y$ are shifted off of the $1$-skeleton so that $x$ lives on $\{-\epsilon\} \times W$ and $y$ lives on $\{ \epsilon \} \times W$. In the center we see the Legendrians as meridians and longitudes on a punctured torus. For these pictures, we identify the sides with each other and the top with the bottom, taking out the puncture determined by the corners. On the right we see matching paths for the Legendrian in the $\pi_{W}$ projection.}
+\label{Fig:FrontSurfaceMatchingPath}
+\end{figure}
+
+In the case $n=2$ the Legendrians can be seen as a meridian and a longitude on a once-punctured torus. To get the monodromy for the open book in this case, we can follow \cite[Theorem 4.8]{Avdek:ContactSurgery} and look at the left-hand side of Figure \ref{Fig:FrontSurfaceMatchingPath}. In that portion of the figure, the $1$-handles for the Weinstein decomposition are omitted, so when performing isotopies we have to stay within a neighborhood of a single page, whose skeleton is shown in the figure.
+
+In general, a linear function (eg. $\pi_{W} = z_{1}|_{W}$) gives a Lefschetz fibration on $W$ with three critical fibers, which after an isotopy we can take to be $1, 0, -1 \in \C$ and with non-singular fiber a $\disk^{\ast}\sphere^{n-2}$. Then we can see $x$ as the matching path sphere for the arc $[0, 1] \subset \R \subset \C$ and $y$ as the matching path sphere for the arc $[-1, 0]$. See the right-hand side of Figure \ref{Fig:FrontSurfaceMatchingPath}. In the $n=2$ case, we see that $x$ is above $y$ and we'll assume that this is the case as well in higher dimensions (although I'd have to think about how to prove it).
+
+\begin{figure}[h]
+\begin{overpic}[scale=.25]{front_surface_matching_path_mod_2.eps}
+\end{overpic}
+\caption{The Legendrians $(\Lambda_{1}'', \Lambda_{2}'')$ shown in purple and green, respectively.}
+\label{Fig:FrontSurfaceMatchingPathMod2}
+\end{figure}
+
+We can handle-slide $x$ up through $y$ to obtain another positive factorization for $\disk^{2n}$ given by $(\Leg_{1}', \Leg_{2}') = (y, \tau_{y}x)$ as seen in Figure \ref{Fig:FrontSurfaceMatchingPathMod2}. We see that $\Leg_{1} = x$ is above $\Leg_{1}' = y$ so that
+\begin{equation*}
+\thiccPosLeg = (\Leg_{1} ,\Leg_{2}) = (x, y), \quad \thiccNegLeg = (\Leg_{1}', \Leg_{2}') = (y, \tau_{y}x)
+\end{equation*}
+is a double positive factorization for the standard $\sphere^{2n}$ for which the first Legendrians give obviously overtwisted bypass data. After the bypass is performed, we apply Lemma \ref{Lemma:OBBypass} to obtain
+\begin{equation*}
+\thiccPosLeg_{b} = (\tau_{x}^{2}y, y), \quad \thiccNegLeg_{b} = (\tau_{x}y, \tau_{y}x)
+\end{equation*}
+
+\begin{figure}[h]
+\begin{overpic}[scale=.25]{front_surface_matching_path_post_bypass.eps}
+\end{overpic}
+\caption{Lefschetz fibrations for the positive region (top) and negative region (bottom) after the obviously overtwisted bypass has been performed.}
+\label{Fig:FrontSurfaceMatchingPathPostBypass}
+\end{figure}
+
+The bypass data determines a contact structure on $[0, 1] \times \sphere^{2n}$ with $\{0\} \times \sphere^{2n}$ the original hypersurface and $\Sigma_{ot} = \{1\} \times \sphere^{2n}$ the result of the bypass. The positive and negative regions for $\Sigma_{ot}$ are denoted $R^{\pm}_{ot}$.
+
+A Lefschetz fibrations for $R^{+}_{ot}$ appears in the top row of Figure \ref{Fig:FrontSurfaceMatchingPathPostBypass} with $\tau_{x}^{2}y$ in blue and $y$ in red. On the bottom row of the figure we have a Lefschetz fibration for $R^{-}_{ot}$ with $\tau_{x}y$ in green and $\tau_{y}x$ in purple. From the matching path picture we see that a diffeomorphism of the plane interchanging the middle and left marked points induces a symplectomorphism $R^{+}_{ot} \rightarrow R^{-}_{ot}$.
+
+\begin{comment}
 \section{Stabilization, unknots, and obviously overtwisted bypasses}
 
 Suppose that we have a Lefschetz fibration $\pi$ (whose total space has dimension $2n$) determined by some $\thiccLeg$ with non-singular fiber $W$ (of dimension $2n-2 > 0$). Write $\divSet$ for the boundary of the total space of $\pi$.
@@ -382,6 +430,7 @@ In the case that $W = \disk^{2n-2}$ with $\pi_{W} = \sum z_{j}^{2}$, we obtain $
 \begin{edits}
 Finish writing this proof. The idea is to build up the total space of $\pi_{s}$ from the basic example. The delicate point is that we need to ensure that the disk remains standard.
 \end{edits}
+\end{comment}
 
 \begin{thebibliography}{}
 \begin{comment}
@@ -406,10 +455,12 @@ L. Ahlfors, \textit{Complex Analysis: An Introduction to the Theory of Analytic 
 
 \bibitem[AS08]{AS:Pencil}
 D. Auroux and I. Smith, \textit{Lefschetz pencils, branched covers and symplectic invariants}, in \textit{Symplectic 4-manifolds and algebraic surfaces}, Lecture Notes in Math vol. 1938, Springer, Berlin, p.1–53, 2008.
+\end{comment}
 
 \bibitem[Av11]{Avdek:ContactSurgery}
 R. Avdek, \textit{Contact surgery and supporting open books}, Algebr. Geom. Topol. Volume 13, p.1613-1660, 2013.
 
+\begin{comment}
 \bibitem[Av20]{Avdek:Dynamics}
 R. Avdek, \textit{Combinatorial Reeb dynamics on punctured contact $3$-manifolds}, to appear in Geom. Topol., arXiv:2005.11428, 2020.
 
