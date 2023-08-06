@@ -210,11 +210,59 @@
 
 \begin{document}
 
-\begin{abstract}
-Here we translate some of the key terminology from \cite{HH:Bypass} into the language of open books and double positive factorizations (DPFs).
-\end{abstract}
-
 \maketitle
+
+\section{Introduction}
+
+After addressing the note you sent in \S \ref{Sec:KoNote}, I'll describe how to apply bypasses to convex hypersurfaces $\Sigma$ described as double positive factorizations (DPFs) in Lemma \ref{Lemma:OBBypass}. The definition of the DPF bypass from my previous notes was wrong -- apparently as the result of sign error in a handle slide. The notes here have a proof which is at least not obviously wrong.
+
+In Definition \ref{Def:OOB} I package the construction of \cite[\S 10]{HH:Bypass} as an \emph{obviously overtwisted bypass} (OOB). Applying such a bypass to any $\{ 0 \} \times \Sigma$ gives a contact structure on $[0, 1]_{t} \times \Sigma$ for which $\{ 1 \} \times \Sigma$ has an overtwisted neighborhood.
+
+A specific OOB attachment is described in \S \ref{Sec:OOExample}. It is the simplest such example, since it can be applied locally and involves the least possible number of handles. If we apply attach this bypass to the boundary of a standard $\dim = 2n+1$ Darboux disk, we get an \emph{obviously overtwisted disk} (OOD). I describe a DPF for the boundary $\Sigma_{ot}$ of the OOD around Definition \ref{Def:OOD}. The positive and negative regions $R^{\pm}_{ot}$ for $\Sigma_{ot}$ are ``exotic'' symplectic manifolds which have been the focus of quite a few articles, cf. \cite[\S 3.5]{CM:LegendrianFronts}.
+
+\subsection{Some speculation}
+
+Any thoughts on if the below is worth attempting or if it's clearly futile? I wouldn't be surprised if you tried something similar (or identical) already.
+
+\begin{q}\label{Q:OTCriterion}
+Is every convex hypersurface $\Sigma$ with an overtwisted $t$-invariant neighborhood the result of an obviously overtwisted bypass attachment to some $\Sigma'$?
+\end{q}
+
+Let's take a fixed $\Sigma$ which has an overtwisted $t$-invariant neighborhood $[0, 1] \times \Sigma$. We'll attempt to prove that $\Sigma$ is the result of an OOB attachment.
+
+Although I don't know how to formalize this, the $h$-principle should allow us to find OODs in a $t$-invariant $(0, 1)_{t} \times \Sigma$ since this neighborhood is overtwisted. Assuming this is true, there will be OOBs inside $[0 ,1)_{t} \times \Sigma$ which can be attached to $\{ 0 \} \times \Sigma$: Attach one end of a contact $1$-handle to the dividing set of $\{ 0 \} \times \Sigma$ and the other end to the dividing set of the OOD. This is the same as first connecting $\{0\} \times \Sigma$ to the boundary of a Darboux ball -- which gives us back $\Sigma$, unmodified -- and then applying an OOB attachment.
+
+Say we attach such an OOB, $B_{1}$, to $\{ 0 \} \times \Sigma$. Then by \cite[Theorem 1.2.5]{HH:Convex} we can get from $\{ 0 \} \times \Sigma$ to $\{ 1 \} \times \Sigma$ by a sequence of bypass attachments $B_{1}, \cdots, B_{k}$ so that the union of all of the bypass attachment slices will be isotopic to the $t$-invariant $[0, 1]\times \Sigma$.
+
+If we can perform handle-slides and rearrange the orders of attachment so that there are bypasses $B'_{1}, \dots, B'_{k'}$ getting us from $\{ 0 \} \times \Sigma$ back to itself and with $B'_{k'}$ obviously overtwisted, then $\Sigma = \{ 1 \} \times \Sigma$ will be the result of an OOB attachment, answering Question \ref{Q:OTCriterion} in the affirmative.
+
+It feels overly optimistic to hope that we could force this $B'_{k'}$ to be of the model form described in \S \ref{Sec:OOExample}. On the other hand, the OOB $B_{1}$ is attached along a ball in $\Sigma$, so maybe it's possible that it could be avoided during any handle-slides and changing of the orders of bypasses, which would guarantee that $B'_{k'} = B_{1}$ giving. Assuming that the strategy of rearranging the orders of bypasses works, I don't know if it would be any easier to prove using DPFs or contact handle attachments.
+
+\section{Notes on Ko's note}\label{Sec:KoNote}
+
+The goal of the note is to prove that given bypass attachment data for Legendrians $\posNegLeg \subset \divSet$ bounding Lefschetz thimbles $\posNegLag \subset R^{\pm}$ that we can make a DPF with page $W$ for which $\posLeg \cup \negLeg$ sit on a single page.
+
+My understanding is that the tricky part is to realize $\posLeg \cup \negLeg$ on a page of a supporting open book for $\divSet$. According to \cite[Corollary 1.3.3]{HH:Convex}, we can realize a smooth Legendrian link on a page of a supporting open book decomposition, but $\posLeg \cup \negLeg$ has a singularity at the point of intersection.
+
+Following the proof at the end of \cite[\S 10]{HH:Convex}, we need to find 
+\be
+\item a neighborhood $N$ of $\posLeg \cup \negLeg$ (disjoint union some other smooth Legendrians) and
+\item a contact Morse function $f$ on $N$ for which is constant along $\partial N$
+\ee
+I will forget the other smooth Legendrian components since the construction is carried out locally on connected components of $N$.
+
+Identify $N$ with a contactization $[-1, 1]_{t} \times V$ where $V$ a plumbing of $\disk^{\ast}\sphere^{n}$, or equivalently an $A_{2}$ Milnor fiber, say given by the variety for $\epsilon + z_{0}^{3} + \sum_{1}^{n}z_{k}^{2}$ intersected with $\disk^{2n+2} \subset \C^{n+1}$. This is a Stein manifold and so the Liouville vector field $X_{V}$ on $V$ is gradient like for a Morse function $f_{V}$ on $V$, $\langle \grad f_{V}, X_{V} \rangle \geq \const \norm{ \grad f_{V}}^{2}$. By rescaling $f_{V}$ and possibly modifying it near $\partial V$ (without creating critical points), we can assume that $\const = f_{V}|_{\partial V} = 1$. On this contactization neighborhood, we can take our contact structure to be determined by $\alpha = dt + \beta$ where $\beta$ is the Liouville form for $V$, set $f = \half t^{2} + f_{V}$, and define $X = t\partial_{t} + X_{V}$. Then we compute
+\begin{equation*}
+\Lie_{X}\alpha = \alpha, \quad \grad f = t\partial_{t} + \grad f_{V}, \quad \langle \grad f, X\rangle = t^{2} + \langle \grad f_{V}, X_{V} \rangle \geq \norm{\grad f}^{2}.
+\end{equation*}
+
+So $X$ is a contact vector field which is gradient-like for $f$. Moreover $f^{-1}(1)$ gives us $N$ with its corners rounded and so contains the singular Legendrian $\posLeg \cup \negLeg$ in its interior as desired. Moreover, the Morse critical points of $f$ are in one-to-one correspondence with those of $f_{V}$ in a way which preserves indices. So if we extend $f$ to the exterior of $N$ arbitrarily, then $N$ will be contained in a neighborhood of the $n$-skeleton since $n$ is the maximum index of a critical point of $f_{V}$.
+
+\section{Conventions}
+
+\begin{edits}
+I need to triple check this.
+\end{edits}
 
 Throughout $\hypersurface$ is a Weinstein convex hypersurface with decomposition $\posNegRegion, \divSet$. We'll take $\dim \divSet = 2n-1, \dim \hypersurface = 2n$.
 
@@ -230,7 +278,11 @@ using the $3\epsilon$ neighborhoods with $\epsilon$ small. With this ordering co
 \end{equation*}
 We say that the Lefschetz fibration is determined by $\thiccLeg = (\Leg_{1} \dots, \Leg_{k})$.
 
-For a double positive factorization (DPF), we have $\posNegRegion$ determined by Lefschetz fibrations with fiber $W$ and ordered collections of (framed) Legendrian spheres $\thiccPosNegLeg = (\posNegLeg_{i})_{i=1}^{k^{\pm}}, \posNegLeg_{i} \subset W$. We identify with boundaries when we have an identifications of the fibers of the Lefschetz fibrations on the $\posNegRegion$ with a fixed $W$ and
+\begin{edits}
+This is the opposite of the convention from Ko's note! I started working this out before I received it.
+\end{edits}
+
+For a double positive factorization (DPF), we have $\posNegRegion$ determined by Lefschetz fibrations with fiber $W$ and ordered collections of (framed) Legendrian spheres $\thiccPosNegLeg = (\posNegLeg_{i})_{i=1}^{k^{\pm}}, \posNegLeg_{i} \subset W$. We identify their boundaries when we have an identifications of the fibers of the Lefschetz fibrations on the $\posNegRegion$ with a fixed $W$ and
 \begin{equation*}
 \tau_{\thiccPosLeg} := \tau_{\posLeg_{k^{+}}} \circ \cdots \circ \tau_{\posLeg_{1}} = \tau_{\negLeg_{k^{-}}} \circ \cdots \circ \tau_{\negLeg_{1}} =: \tau_{\thiccNegLeg}.
 \end{equation*}
@@ -240,9 +292,9 @@ Specifically the identification of the monodromies allows us identify the mappin
 \end{equation*}
 From the open book picture, the mapping tori make up all of the $\partial \posNegRegion$ except for the binding. The identification trivially extends over the binding since it is $\partial W$.
 
-\section{Legendrian sum}
+\subsection{Legendrian sum}
 
-Given a pair $\posNegLeg$ of Legendrians in a contact manifold $\divSet$ intersecting $\xi$-transversely at a single point, we'll define the Legendrian sum using the Lagrangian projection formulation from \cite{HH:Bypass}.
+Given a pair $\posNegLeg$ of Legendrians in a contact manifold $\divSet$ intersecting $\xi$-transversely at a single point, we define the Legendrian sum using the Lagrangian projection formulation from \cite{HH:Bypass}.
 
 Let $N_{\divSet}(\negLeg \cup \posLeg)$ be a neighborhood in $\divSet$ inside of a subset of the $[0, 4\epsilon]_{t} \times W$ where $W$ is a Weinstein manifold containing a plumbing of two copies of $\disk^{\ast}\sphere^{n-1}$. The $\posNegLeg$ are given by the $0$-sections of the $\disk^{\ast}\sphere^{n-1}$ inside $\{0\} \times W$ and our contact structure is determined by $dt + \beta$ for $\beta$ a Liouville form on $W$. Then define
 \begin{equation*}
@@ -257,11 +309,9 @@ where $\tau$ is a Dehn twist. Then
 F^{\pm\epsilon}(\negLeg \uplus \posLeg) := \Flow_{\partial_{t}}^{\pm \epsilon}(\negLeg \uplus \posLeg) \subset ([0, \epsilon] \cup [2\epsilon, 3\epsilon]) \times W.
 \end{equation*}
 
-\subsubsection{Translation}
+We'll always think of $\posNegLeg$ as being Legendrian spheres sitting on a single page $W$ of an open book for $\divSet$. We'll always work far from the binding so that we can assume that each $t = t_{0}$ slice of $[-2\epsilon, 2\epsilon] \times W$ also sits in a page. After a slight perturbation of the open book the $F^{\pm \epsilon}(\negLeg \uplus \posLeg)$ can be assumed to sit on pages as well.
 
-We'll always think of $\posNegLeg$ as being Legendrian spheres sitting on a single page $W$ of an open book for $\divSet$. We'll always work far from the binding so that we can assume that each $t = t_{0}$ slice of $[-2\epsilon, 2\epsilon] \times W$ also sits in a page. After a slight perturbation of the open book the $(\negLeg \uplus \posLeg)^{\pm \epsilon}$ can be assumed to sit on pages as well.
-
-\section{Bypasses for DPFs}
+\section{Bypasses}
 
 \begin{defn}
 Bypass attachment data consists of a tuple $(\posNegLeg, \posNegLag)$ for which $\posNegLeg$ is a pair of Legendrians intersecting in a single point and $\posNegLag$ are Lagrangian slice disks in the $\posNegRegion$ for the $\posNegLeg$.
@@ -274,18 +324,16 @@ If we attach a bypass to $[-\epsilon, 0] \times \hypersurface$ at $\{ 0 \} \time
 \item The boundaries of the $\posNegRegion_{1}$ are identified by the contactomorphism $\partial \posRegion_{1} \rightarrow \partial \negRegion_{1}$ obtained by sliding $F^{-\epsilon}\posLeg$ up over $(\negLeg \uplus \posLeg)$ to $F^{\epsilon}\negLeg$.
 \ee
 
-To perform a \emph{trivial bypass}, we require that both $\posNegLeg$ are unknots with the $\posNegLag$ being the standard disk fillings with $\posLeg$ below $\negLeg$.
+\begin{defn}\label{Def:OOB}
+We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obviously overtwisted bypass}. This means that $\posLeg$ is the standard unknot, $\posLag$ is the standard Lagrangian disk, and $\posLeg$ is \emph{above} $\negLeg$ in the $\theta$-disk sense.
+\end{defn}
 
-We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obviously overtwisted bypass}. This means that $\posLeg$ is the standard unknot, $\posLag$ is the standard Lagrangian disk, and $\posLeg$ is above $\negLeg$. The definition ensures that the convex hypersurface resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}.
+The definition ensures that the convex hypersurface $\Sigma_{1}$ resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}.
 
-\begin{q}
-Is every convex hypersurface with an overtwisted neighborhood the result of an obviously overtwisted bypass?
-\end{q}
-
-\subsubsection{Translation}
+\subsection{Bypasses for DPFs}
 
 \begin{lemma}\label{Lemma:OBBypass}
-Suppose that the convex hypersurface is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give bypass attachment data. The result of the bypass can be described by a DPF $\thiccPosNegLeg_{b}$ given by
+Suppose that the convex hypersurface $\Sigma = \Sigma_{0}$ is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give bypass attachment data. The result of the bypass, $\Sigma_{1}$, can be described by a DPF $\thiccPosNegLeg_{b}$ given by
 \begin{equation*}
 \thiccPosLeg_{b} = (\tau_{\posLeg_{1}}^{2}\negLeg_{1}, \posLeg_{2}, \dots, \posLeg_{k^{+}}), \quad \thiccNegLeg_{b} = (\tau_{\posLeg_{1}}\negLeg_{1}, \negLeg_{2}, \dots, \negLeg_{k^{-}})
 \end{equation*}
@@ -294,8 +342,9 @@ Suppose that the convex hypersurface is described by a DPF $\thiccPosNegLeg$ wit
 Let's first verify that the monodromies of the $\thiccPosNegLeg_{b}$ agree as a sanity check:
 \begin{equation*}
 \begin{aligned}
-\tau_{\thiccPosLeg_{b}} &= \tau_{\posLeg_{k^{+}}} \circ \cdots \circ \tau_{\posLeg_{2}} \circ \tau_{\tau_{\posLeg_{1}}^{2}\negLeg_{1}} = \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{2}} \circ \tau_{\posLeg_{1}}^{2} \circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-2} \\
-&= \tau_{\thiccPosLeg} \circ \tau_{\posLeg_{1}} \circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-2} = \tau_{\thiccPosLeg} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
+\tau_{\thiccPosLeg_{b}} &= \tau_{\posLeg_{k^{+}}} \circ \cdots \circ \tau_{\posLeg_{2}} \circ \tau_{\tau_{\posLeg_{1}}^{2}\negLeg_{1}} \\
+&= \tau_{\posLeg_{k}} \circ \cdots \circ \tau_{\posLeg_{2}} \circ \tau_{\posLeg_{1}} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1} \\
+&=  \tau_{\thiccPosLeg} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
 &= \tau_{\thiccNegLeg} \circ \tau_{\tau_{\posLeg_{1}}\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}  = \tau_{\thiccNegLeg} \circ \tau_{\tau_{\negLeg_{1}}^{-1}\posLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
 &= \tau_{\thiccNegLeg} \circ \tau_{\negLeg_{1}}^{-1}\circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
 &= \tau_{\negLeg_{k^{-}}}\circ \cdots \circ \tau_{\negLeg_{2}} \circ \tau_{\negLeg_{1}} \circ \tau_{\negLeg_{1}}^{-1}\circ \tau_{\posLeg_{1}}\circ \tau_{\negLeg_{1}} \circ \tau_{\posLeg_{1}}^{-1}\\
@@ -323,13 +372,13 @@ Let's first verify that the monodromies of the $\thiccPosNegLeg_{b}$ agree as a 
 \put(70, 24){$(-1)$}
 \end{overpic}
 \vspace{5mm}
-\caption{Depiction of bypass surgeries in an open book.}
+\caption{Depiction of bypass surgeries in an open book. Each ``sheet'' is a neighborhood of the point $\posLeg_{1} \cap \negLeg_{1}$ in $W$.}
 \label{Fig:OBBypass}
 \end{figure}
 
-Now to prove the lemma we apply the definition of the bypass. Suppose that the $\posNegLeg_{1}$ lie on $\{ 3\epsilon \} \times W$. The cocores of the surgery handles can then be pushed down to $\{2 \epsilon\} \times W$ as shown in the left-hand side of Figure \ref{Fig:OBBypass} so that they share a single transverse intersection.
+Now to prove the lemma we apply the definition of the bypass. Suppose that the $\posNegLeg_{1}$ lie on $\{ 3\epsilon \} \times W$. The cocores of the surgery handles can then be pushed down to $\{2 \epsilon\} \times W$ by the negative Reeb flow as shown in the left-hand side of Figure \ref{Fig:OBBypass} so that they share a single transverse intersection.
 
-Working out $\thiccNegLeg_{b}$ is very easy. According to the definition of the bypass, we must perform a contact $+1$ surgery on a copy of $\negLeg_{1}$ placed slightly above the new surgery locus $\negLeg_{1} \uplus \posLeg_{1} = \tau_{\posLeg_{1}}\negLeg_{1}$ in the boundary of $\partial \negRegion_{1}$. This is as shown in the left-hand side of Figure \ref{Fig:OBBypass}. The $\pm 1$ surgeries along the $\negLeg_{1}$ at heights $2\epsilon$ and $3\epsilon$ cancel, so that we are only left with the new $-1$ surgery locus.
+Working out $\thiccNegLeg_{b}$ is very easy. According to the definition of the bypass, we must perform a contact $+1$ surgery on a copy of $\negLeg_{1}$ placed slightly above the new surgery locus $\negLeg_{1} \uplus \posLeg_{1} = \tau_{\posLeg_{1}}\negLeg_{1}$ in the boundary of $\partial \negRegion_{1}$. This is as shown in the right-hand side of Figure \ref{Fig:OBBypass}. The $\pm 1$ surgeries along the $\negLeg_{1}$ at heights $2\epsilon$ and $3\epsilon$ cancel, so that we are only left with the new $-1$ surgery locus.
 
 To describe the boundary of the new positive region $\posRegion_{1}$ we must perform a contact $-1$ surgery along $\tau_{\posLeg_{1}}\negLeg_{1}$ (at height $2\epsilon$) along with a contact $+1$ surgery slightly below it, say at $\{\epsilon\} \times W$. This is as depicted in the center row of Figure \ref{Fig:OBBypass}. We want to make the $\pm 1$ surgeries on $\posLeg_{1}$ cancel. To that end, we handle-slide $\negLeg_{1} \uplus \posLeg_{1} = \tau_{\posLeg_{1}}\negLeg_{1}$ (currently at height $2\epsilon$) down through the surgery locus at $\{\epsilon\} \times  \posLeg_{1}$. The before and after pictures are as shown in the left and right columns of Figure \ref{Fig:OBBypassSlide}, respectively. Because we are flowing down through a $+1$ surgery handle, the effect is a positive Dehn twist: We obtain $\tau_{\posLeg_{1}}^{2}\negLeg_{1}$ on the bottom (say, at height $\epsilon$) and canceling $\pm1$ surgeries (say at heights $2\epsilon$, $3\epsilon$). Deleting the canceling $\pm 1$ surgeries, we are left with $\thiccPosLeg_{b}$ as claimed.
 
@@ -343,11 +392,22 @@ To describe the boundary of the new positive region $\posRegion_{1}$ we must per
 \put(52, 38){$(-1)$}
 \end{overpic}
 \vspace{5mm}
-\caption{Handle-sliding the new $-1$ surgery locus on $\partial \posRegion_{1}$ down through the new $+1$ surgery locus. On the bottom left, we see $\tau_{\posLeg_{1}}^{2}\negLeg$ sitting on $\{ \epsilon \} \times W$.}
+\caption{Handle-sliding the new $-1$ surgery locus on $\partial \posRegion_{1}$ down through the new $+1$ surgery locus. The before picture is on the left, and in the after picture on the right $\tau_{\posLeg_{1}}^{2}\negLeg$ sits on the bottom sheet $\{ \epsilon \} \times W$.}
 \label{Fig:OBBypassSlide}
 \end{figure}
 
-\section{An obviously overtwisted example}
+\subsection{Antibypasses for DPFs}
+
+To perform an anti-bypass, we change the orientation on our convex hypersurface, apply a bypass, and then change the orientation again. Hence the analogue of Lemma \ref{Lemma:OBBypass} for anti-bypasses is as follows:
+
+\begin{lemma}\label{Lemma:OBAntiBypass}
+Suppose that the convex hypersurface is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give anti-bypass attachment data. The result of the anti-bypass can be described by a DPF $\thiccPosNegLeg_{a}$ given by
+\begin{equation*}
+\thiccPosLeg_{a} = (\tau_{\negLeg_{1}}\posLeg_{1}, \posLeg_{2}, \dots, \posLeg_{k^{+}}), \quad \thiccNegLeg_{a} = (\tau_{\negLeg_{1}}^{2}\posLeg_{1}, \negLeg_{2}, \dots, \negLeg_{k^{-}})
+\end{equation*}
+\end{lemma}
+
+\section{An obviously overtwisted example}\label{Sec:OOExample}
 
 Let's describe an example bypass on $\sphere^{2n}$ starting with $\posNegRegion = \disk^{2n}$. So our convex hypersurface is the boundary of a contact $\dim=2n+1$ Darboux disk.
 
@@ -355,31 +415,33 @@ For the Lefschetz fibrations on $\disk^{2n}$ (on which we take standard complex 
 \begin{equation*}
 \thiccPosNegLeg = (\Lambda_{1}, \Lambda_{2}) = (x, y)
 \end{equation*}
-for both $\pm$. Both of the $x$ and $y$ are unknots in $\disk^{2n}$. According to our conventions, $y$ sits slightly above $x$ in a thickened neighborhood of $W$.
+for both $\pm$. Both of the $x$ and $y$ are unknots in $\disk^{2n}$. According to our convention for ordering Dehn twists, $y \subset W \times \{ \epsilon\}$ while $x \subset W \times \{ -\epsilon\}$.
 
 \begin{figure}[h]
 \begin{overpic}[scale=.25]{front_surface_matching_path.eps}
 \end{overpic}
-\caption{In each subfigure we see $x$ in blue and $y$ in red. On the left they are depicted as Legendrians in the front projection with the skeleton of $W$ in black as in \cite{Avdek:ContactSurgery}. Here $x$ and $y$ are shifted off of the $1$-skeleton so that $x$ lives on $\{-\epsilon\} \times W$ and $y$ lives on $\{ \epsilon \} \times W$. In the center we see the Legendrians as meridians and longitudes on a punctured torus. For these pictures, we identify the sides with each other and the top with the bottom, taking out the puncture determined by the corners. On the right we see matching paths for the Legendrian in the $\pi_{W}$ projection.}
+\caption{In each subfigure we see $x$ in blue and $y$ in red. On the left they are boundaries of Lefschetz thimbles in $\Sthree$. In the middle left, a Gompf diagram \cite{Gompf:Handlebodies}, they are Legendrians in the front projection with the skeleton of $W$ in black as in \cite{Avdek:ContactSurgery}. Here $x$ and $y$ are shifted off of the $1$-skeleton (thin black graph) so that $x$ lives on $\{-\epsilon\} \times W$ and $y$ lives on $\{ \epsilon \} \times W$ and the dashed vertical lines represent $1$-handles. In the center-right the Legendrians give a meridian and longitude on a punctured torus. We identify the sides of the square with each other and the top with the bottom, taking the puncture to be the corner. On the right are matching paths for $x,y$ in the $\pi_{W}$ projection.}
 \label{Fig:FrontSurfaceMatchingPath}
 \end{figure}
 
-In the case $n=2$ the Legendrians can be seen as a meridian and a longitude on a once-punctured torus. To get the monodromy for the open book in this case, we can follow \cite[Theorem 4.8]{Avdek:ContactSurgery} and look at the left-hand side of Figure \ref{Fig:FrontSurfaceMatchingPath}. In that portion of the figure, the $1$-handles for the Weinstein decomposition are omitted, so when performing isotopies we have to stay within a neighborhood of a single page, whose skeleton is shown in the figure.
+When $n=2$ the Legendrians can be seen as a meridian and a longitude on a once-punctured torus. To get the monodromy for the open book in this case, we can follow \cite[Theorem 4.8]{Avdek:ContactSurgery} and look at the left-hand side of Figure \ref{Fig:FrontSurfaceMatchingPath}.
 
-In general, a linear function (eg. $\pi_{W} = z_{1}|_{W}$) gives a Lefschetz fibration on $W$ with three critical fibers, which after an isotopy we can take to be $1, 0, -1 \in \C$ and with non-singular fiber a $\disk^{\ast}\sphere^{n-2}$. Then we can see $x$ as the matching path sphere for the arc $[0, 1] \subset \R \subset \C$ and $y$ as the matching path sphere for the arc $[-1, 0]$. See the right-hand side of Figure \ref{Fig:FrontSurfaceMatchingPath}. In the $n=2$ case, we see that $x$ is above $y$ and we'll assume that this is the case as well in higher dimensions (although I'd have to think about how to prove it).
+In general, a linear function (eg. $\pi_{W} = z_{1}|_{W}$) gives a Lefschetz fibration on $W$ with three singular fibers, which after an isotopy we can take to be $1, 0, -1 \in \C$ and with non-singular fiber a $\disk^{\ast}\sphere^{n-2}$. Then we can see $x$ as the matching path sphere for the arc $[0, 1] \subset \R \subset \C$ and $y$ as the matching path sphere for the arc $[-1, 0]$. See the right-hand side of Figure \ref{Fig:FrontSurfaceMatchingPath}. In the $n=2$ case, we see that $x$ is above $y$ -- in the $\theta$-disk sense of \cite{HH:Bypass} -- and we'll assume that this is the case as well in higher dimensions (although I'd have to think about how to prove it).
 
 \begin{figure}[h]
 \begin{overpic}[scale=.25]{front_surface_matching_path_mod_2.eps}
 \end{overpic}
-\caption{The Legendrians $(\Lambda_{1}'', \Lambda_{2}'')$ shown in purple and green, respectively.}
+\caption{The Legendrians $(y, \tau_{y}x)$ shown in green and purple, respectively.}
 \label{Fig:FrontSurfaceMatchingPathMod2}
 \end{figure}
 
-We can handle-slide $x$ up through $y$ to obtain another positive factorization for $\disk^{2n}$ given by $(\Leg_{1}', \Leg_{2}') = (y, \tau_{y}x)$ as seen in Figure \ref{Fig:FrontSurfaceMatchingPathMod2}. We see that $\Leg_{1} = x$ is above $\Leg_{1}' = y$ so that
-\begin{equation*}
-\thiccPosLeg = (\Leg_{1} ,\Leg_{2}) = (x, y), \quad \thiccNegLeg = (\Leg_{1}', \Leg_{2}') = (y, \tau_{y}x)
-\end{equation*}
-is a double positive factorization for the standard $\sphere^{2n}$ for which the first Legendrians give obviously overtwisted bypass data. After the bypass is performed, we apply Lemma \ref{Lemma:OBBypass} to obtain
+\subsection{Applying the bypass}
+
+We can handle-slide $x$ up through $y$ to obtain another positive factorization for $\disk^{2n}$ given by $(y, \tau_{y}x)$ as seen in Figure \ref{Fig:FrontSurfaceMatchingPathMod2}. So
+\begin{equation}\label{Eq:BypassSetup}
+\thiccPosLeg = (x, y), \quad \thiccNegLeg = (y, \tau_{y}x)
+\end{equation}
+is a double positive factorization for the standard $\sphere^{2n}$ for which the first Legendrians give obviously overtwisted bypass data. A bypass for the pair $x, y$ is obviously overtwisted, since $x$ is above $y$ -- in the sense of $\theta$-disks. After the bypass is performed, we apply Lemma \ref{Lemma:OBBypass} to obtain
 \begin{equation*}
 \thiccPosLeg_{b} = (\tau_{x}^{2}y, y), \quad \thiccNegLeg_{b} = (\tau_{x}y, \tau_{y}x)
 \end{equation*}
@@ -391,9 +453,32 @@ is a double positive factorization for the standard $\sphere^{2n}$ for which the
 \label{Fig:FrontSurfaceMatchingPathPostBypass}
 \end{figure}
 
-The bypass data determines a contact structure on $[0, 1] \times \sphere^{2n}$ with $\{0\} \times \sphere^{2n}$ the original hypersurface and $\Sigma_{ot} = \{1\} \times \sphere^{2n}$ the result of the bypass. The positive and negative regions for $\Sigma_{ot}$ are denoted $R^{\pm}_{ot}$.
+The bypass data determines a contact structure on $[0, 1] \times \sphere^{2n}$ with $\{0\} \times \sphere^{2n}$ the original hypersurface (given by the boundary of a $\dim=2n+1$ Darboux disk) and
+\begin{equation*}
+\Sigma_{ot} = \{1\} \times \sphere^{2n}
+\end{equation*}
+the result of the bypass. The positive and negative regions for $\Sigma_{ot}$ are denoted $R^{\pm}_{ot}$.
 
-A Lefschetz fibrations for $R^{+}_{ot}$ appears in the top row of Figure \ref{Fig:FrontSurfaceMatchingPathPostBypass} with $\tau_{x}^{2}y$ in blue and $y$ in red. On the bottom row of the figure we have a Lefschetz fibration for $R^{-}_{ot}$ with $\tau_{x}y$ in green and $\tau_{y}x$ in purple. From the matching path picture we see that a diffeomorphism of the plane interchanging the middle and left marked points induces a symplectomorphism $R^{+}_{ot} \rightarrow R^{-}_{ot}$.
+\begin{defn}\label{Def:OOD}
+The \emph{obviously overtwisted disk} (OOD) is the disk with convex boundary $\Sigma_{ot}$ obtained by attaching an obviously overtwisted bypass to the boundary of a standard Darboux disk.
+\end{defn}
+
+A Lefschetz fibrations for $R^{+}_{ot}$ appears in the top row of Figure \ref{Fig:FrontSurfaceMatchingPathPostBypass} with $\tau_{x}^{2}y$ in blue and $y$ in red. On the bottom row of the figure we have a Lefschetz fibration for $R^{-}_{ot}$ with $\tau_{x}y$ in green and $\tau_{y}x$ in purple. From the matching path picture, a diffeomorphism of the disk interchanging the middle and left marked points induces a symplectomorphism $R^{+}_{ot} \rightarrow R^{-}_{ot}$.
+
+Knowing that \cite{CM:LegendrianFronts} contained lots of pictures, I took a look and got lucky, finding the Lefschetz fibration described in bottom right of Figure \ref{Fig:FrontSurfaceMatchingPathPostBypass} as \cite[Figure 28]{CM:LegendrianFronts}. The $R^{\pm}_{ot}$ are well-studied in the literature. At least in the $2n=6$ case they can be described as affine algebraic varieties cut out by a single equation
+\begin{equation*}
+R^{\pm}_{ot} = \{ x(xy - 1) = z_{1}^{2} + z_{2}^{2} \} \subset \C^{4}_{x, y, z_{1}, z_{2}}
+\end{equation*}
+(and I'm sure this could be generalized to other dimensions by adding more $z_{k}$s). The following are known facts for the $\dim=4, 6$ cases: The $R^{\pm}_{ot}$ are not flexible but embed into flexible manifolds of the same dimension. They have symplectic homology $SH = 0$ over $\Z$ but $SH \neq 0$ over a twisted coefficient system.
+
+\subsection{Applying the anti-bypass}
+
+Just to see what the result looks like, let's apply an anti-bypass to the data of Equation \eqref{Eq:BypassSetup}. Plugging in Lemma \ref{Lemma:OBAntiBypass}, we get
+\begin{equation*}
+\thiccPosLeg = (x, y), \quad \thiccNegLeg = (y, \tau_{y}x) \quad \mapsto \quad \thiccPosLeg_{a} = (\tau_{y}x, y), \quad \thiccNegLeg_{a} = (\tau_{y}^{2}x, \tau_{y}x)
+\end{equation*}
+In this case, the positive and negative regions are again copies of $\disk^{2n}$ as they can both seen to be positive stabilizations.
+
 
 \begin{comment}
 \section{Stabilization, unknots, and obviously overtwisted bypasses}
@@ -488,12 +573,10 @@ D. Bar-Natan, S. Morrison, et. al, \textit{The Rolfsen knot table}, \url{http://
 
 \bibitem[Bj16]{Bjorklund:LCH}
 J. Bj\"{o}rklund, \textit{Legendrian contact homology in the product of a punctured Riemann surface and the real line}, Journal of the London Math. Soc., Vol. 94, no 3, p.970-992, 2016.
-\end{comment}
 
 \bibitem[BEM15]{BEM:OT}
 M. S. Borman, Y. Eliashberg, and E. Murphy, \textit{Existence and classification of overtwisted contact structures in all dimensions}, Acta Math. 215, p.281–361, 2015.
 
-\begin{comment}
 \bibitem[B02]{Bourgeois:Thesis}
 F. Bourgeois, \textit{A Morse-Bott approach to contact homology}, PhD thesis, Stanford University, 2002.
 
@@ -532,19 +615,20 @@ Invent. math., Volume 175, p. 611–680, 2009.
 
 \bibitem[BT82]{BottTu}
 R. Bott and L. R. Tu, \textit{Differential forms in algebraic topology}, Graduate Texts in Mathematics 82, Springer-Verlag, 1982.
-\end{comment}
 
 \bibitem[BHH]{BHH:GirouxCorrespondence}
 J. Breen, K. Honda, and Y. Huang, \textit{The Giroux correspondence in arbitrary dimensions}, arXiv:2307.02317, 2023.
 
-\begin{comment}
 \bibitem[CGKS14]{CGKS:Polyfilling}
 C. Cao, N. Gallup, K. Hayden, J. M. Sabloff, \textit{Topologically Distinct Lagrangian and Symplectic Fillings}, Math. Research Letters, Vol. 21, p.85-99, 2014.
+\end{comment}
+
+\bibitem[CM19]{CM:LegendrianFronts}
+R. Casals and E. Murphy, \textit{Legendrian fronts for affine varieties}, Duke Math. J. 168(2): p.225-323, 2019.
 
 \begin{comment}
 \bibitem[CMP19]{CMP:OT}
 R. Casals, E. Murphy, and F. Presas, \textit{Geometric criteria for overtwistedness}, J. Amer. Math. Soc. 32, p.563–604, 2019.
-
 
 \bibitem[CG86]{CG:Cobordisms}
 A. Casson, C. M. Gordon, \textit{Cobordism of classical knots}, from: "{\'A} la recherche de la topologie perdue" (editors L Guillou, A Marin), Progr. Math. 62, Birkh{\"a}user 181, 1986.
@@ -767,17 +851,16 @@ E. Giroux, \textit{G\'{e}om\'{e}trie de contact: de la dimension trois vers les 
 
 \bibitem[Girou17]{Giroux:IdealLiouville}
 E. Giroux, \textit{Ideal Liouville Domains - a cool gadget}, J. Symplectic Geom., Volume 18, p.769–790, 2017.
-\end{comment}
 
 \bibitem[GP17]{GirouxPardon}
 E. Giroux and J. Pardon, \textit{Existence of Lefschetz fibrations on Stein and Weinstein domains}, Geom. Topol., 21, no. 2, 963–997, 2017.
+\end{comment}
 
-\begin{comment}
 \bibitem[Go98]{Gompf:Handlebodies}
 R. Gompf, \textit{Handlebody construction of Stein surfaces}, Ann. of Math. 148,
 p.619-693, 1998.
 
-
+\begin{comment}
 
 \bibitem[GS99]{GS:KirbyCalculus}
 R. Gopf and A. Stipsicz, \textit{4-manifolds and Kirby Calculus}, Graduate Studies in Mathematics 20, Amer. Math. Society, Providence, RI, 1999.
@@ -827,10 +910,10 @@ K. Honda and H. Huang, \textit{Bypass attachments in higher-dimensional contact 
 \bibitem[HH19]{HH:Convex}
 K. Honda and H. Huang, \textit{Convex hypersurface theory in contact topology}, preprint, arXiv:1907.06025, 2019.
 
+\begin{comment}
 \bibitem[HT22]{HT:Category}
 Ko Honda and Yin Tian, \textit{Contact categories of disks}, J. Symp. Geom., Vol. 20, 2022.
 
-\begin{comment}
 \bibitem[Hua13]{Huang:OTClassification}
 Y. Huang, \textit{A proof of the classification theorem of overtwisted contact structures via convex surface theory}, J. Symplectic Geom.
 Volume 11, Number 4, p.563-601, 2013.
