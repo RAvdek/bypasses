@@ -64,6 +64,7 @@
 \newcommand{\thicc}[1]{\pmb{#1}}
 \DeclareMathOperator{\aug}{\thicc{\epsilon}}
 
+\newcommand{\Leg}{\Lambda}
 \newcommand{\filtration}{\mathcal{F}}
 \newcommand{\newRSFT}{PDH}
 \newcommand{\Algebra}{\mathcal{A}}
@@ -164,7 +165,6 @@
 \newcommand{\posLag}{\Lag^{+}}
 \newcommand{\negLag}{\Lag^{-}}
 \newcommand{\posNegLag}{\Lag^{\pm}}
-\newcommand{\Leg}{\Lambda}
 \newcommand{\posLeg}{\Leg^{+}}
 \newcommand{\negLeg}{\Leg^{-}}
 \newcommand{\thiccLeg}{\thicc{\Leg}}
@@ -198,41 +198,43 @@
 \newtheorem{warn}[thm]{Warning}
 \newtheorem{edits}[thm]{Editor notes}
 \newtheorem{prob}[thm]{Problem}
-\newtheorem{trans}{Translation}
 
 %%%% Formatting %%%%%%%%%
 %\topmargin0in \textheight8.7in \textwidth6.5in \oddsidemargin0in
 %\evensidemargin0in
 
-\title[More notes on bypasses]{More notes on bypasses: \today}
+\title[Weinstein convex hypersurfaces]{A tightness criterion for Weinstein convex hypersurfaces}
 %\author{Russell Avdek}
-
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
+\section{What do we want to prove?}
 
-After addressing the note you sent in \S \ref{Sec:KoNote}, I'll describe how to apply bypasses to convex hypersurfaces $\Sigma$ described as double positive factorizations (DPFs) in Lemma \ref{Lemma:OBBypass}. The definition of the DPF bypass from my previous notes was wrong -- the result of sign error in a handle slide. The notes here have a proof which is at least not obviously wrong.
+Our goal is to give a tightness criterion for (neighborhoods of) Weinstein convex hypersurfaces \cite{HH:Convex} in analogy with ``a contact manifold is overtwisted iff it is the negative stabilization of some open book''. Here is our candidate criterion, posed as a definition and question:
 
-In Definition \ref{Def:OOB} I package the construction of \cite[\S 10]{HH:Bypass} as an \emph{obviously overtwisted bypass} (OOB). Applying such a bypass to any $\{ 0 \} \times \Sigma$ gives a contact structure on $[0, 1]_{t} \times \Sigma$ for which $\{ 1 \} \times \Sigma$ has an overtwisted neighborhood.
-
-A specific OOB attachment is described in \S \ref{Sec:OOD}. It is the simplest such example, since it can be applied locally and involves the least possible number of handles. If we apply attach this bypass to the boundary of a standard $\dim = 2n+1$ Darboux disk, we get an \emph{obviously overtwisted disk} (OOD).
-
-I describe a DPF for the boundary $\Sigma_{ot}$ of the OOD in \S \ref{Sec:OOBAttchment}. If everything is correct, the $R^{\pm}_{ot}$ for $\Sigma_{ot}$ are ``exotic'' symplectic manifolds which have been the focus of quite a few articles. I've double checked the calculations here, but am still a little skeptical: I don't know if the $R^{\pm}_{ot}$ have ``enough'' holomorphic planes for a neighborhood of $\Sigma_{ot}$ to have vanishing contact homology as in \cite{Avdek:Convex}.
-
-\subsection{Some speculation}
-
-Any thoughts on if the below is worth attempting or if it's clearly futile? You've likely considered something similar. It's independent of the $R^{\pm}_{ot}$ calculation mentioned above.
+\begin{defn}\label{Def:OOB}
+We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obviously overtwisted bypass} (OOB). That is, $\posLeg$ is the unknot, $\posLag$ is the standard Lagrangian disk, and $\posLeg$ is $\theta$-above $\negLeg$.
+\end{defn}
 
 \begin{q}\label{Q:OTCriterion}
 Is every convex hypersurface $\Sigma$ with an overtwisted $t$-invariant neighborhood the result of an obviously overtwisted bypass attachment to some $\Sigma'$?
 \end{q}
 
+\subsection{Some speculation}
+
+We'll sketch a strategy for proving that the answer to Question \ref{Q:OTCriterion} is yes.
+
+\begin{edits}
+For Yang: Assuming the conjecture is true, you would probably have a cleaner route to proving it. The strategy is probably pretty sketchy and it might be better to skip ahead and come back to this later.
+\end{edits}
+
 Let's take a fixed $\Sigma$ which has an overtwisted $t$-invariant neighborhood $[0, 1] \times \Sigma$. We'll attempt to prove that $\Sigma$ is the result of an OOB attachment.
 
-The $h$-principle should allow us to find OODs in a $t$-invariant $(0, 1)_{t} \times \Sigma$ since this neighborhood is overtwisted. Assuming this is true, there will be OOBs inside $[0 ,1)_{t} \times \Sigma$ which can be attached to $\{ 0 \} \times \Sigma$: Attach one end of a contact $1$-handle to the dividing set of $\{ 0 \} \times \Sigma$ and the other end to the dividing set of the OOD. This is the same as first connecting $\{0\} \times \Sigma$ to the boundary of a Darboux ball -- which gives us back $\Sigma$, unmodified -- and then applying an OOB attachment.
+In \S \ref{Sec:OOExample} we describe ``obviously overtwisted disks'' (OODs) which are overtwisted objects obtained for OOB attachments. They can be described explicitly using Lefschetz fibration data in all dimensions.
+
+The $h$-principle should allow us to find OODs in a $t$-invariant $(0, 1)_{t} \times \Sigma$ since this neighborhood is overtwisted. I don't know how to formalize this. Assuming this is true, there will be OOBs inside $[0 ,1)_{t} \times \Sigma$ which can be attached to $\{ 0 \} \times \Sigma$: Attach one end of a contact $1$-handle to the dividing set of $\{ 0 \} \times \Sigma$ and the other end to the dividing set of the OOD. This is the same as first connecting $\{0\} \times \Sigma$ to the boundary of a Darboux ball -- which gives us back $\Sigma$, unmodified -- and then applying an OOB attachment.
 
 Say we attach such an OOB, $B_{1}$, to $\{ 0 \} \times \Sigma$. Then by \cite[Theorem 1.2.5]{HH:Convex} we can get from $\{ 0 \} \times \Sigma$ to $\{ 1 \} \times \Sigma$ by a sequence of bypass attachments $B_{1}, \cdots, B_{k}$ so that the union of all of the bypass attachment slices will be isotopic to the $t$-invariant $[0, 1]\times \Sigma$.
 
@@ -240,63 +242,66 @@ If we can perform handle-slides and rearrange the orders of attachment so that t
 
 The OOB $B_{1}$ is attached along a ball in $\Sigma$, so maybe it's possible that it could be avoided during any handle-slides and changing of the orders of bypasses, guaranteeing $B'_{k'} = B_{1}$. If true, then $\Sigma$ would be determined by the model OOB attachment described in \S \ref{Sec:OOExample}. Perhaps this is overly optimistic. Assuming that the strategy of rearranging the orders of bypasses works, I don't know if it would be any easier to prove using DPFs or contact handle attachments.
 
-\section{Notes on Ko's note}\label{Sec:KoNote}
+\subsection{DPFs overview}
 
-The goal of Ko's note is to prove that provided bypass attachment data for Legendrians $\posNegLeg \subset \divSet$ bounding thimbles $\posNegLag \subset R^{\pm}$, we can make a DPF with page $W$ for which $\posLeg \cup \negLeg$ sit on a single page. My understanding is that the tricky part is to realize $\posLeg \cup \negLeg$ on a page of a supporting open book for $\divSet$. By \cite[Corollary 1.3.3]{HH:Convex}, we can realize a smooth Legendrian on a page of a supporting open book decomposition, but $\posLeg \cup \negLeg$ has a singularity at the point of intersection.
+To describe convex hypersurfaces and bypasses we will use the language of Lefschetz fibrations to encode them as \emph{double positive factorizations} (DPFs). This is not strictly necessary to address a generalized Giroux criterion, but provides a simple means of producing examples in higher dimensions where handle-bodies are difficult to intuit.
 
-Following the proof at the end of \cite[\S 10]{HH:Convex}, we need to find 
+Applying \cite{BHH:GirouxCorrespondence, GirouxPardon}, any $\dim = 2n+2$ Weinstein manifold can be described by the ``combinatorial'' data of a Lefschetz fibration, that is, an ordered sequence of (framed) Lagrangian spheres $\LagTuple = (L_{1}, \dots, L_{k})$ in some $\dim=2n$ Weinstein manifold which are the boundaries of Lefschetz thimbles. Then the boundary is described as an open book with monodromy a product of the Dehn twists along the spheres, $\phi = \tau_{L_{k}}\circ \cdots \circ \tau_{L_{1}}$. An open book with \emph{two} positive Dehn twist factorizations of its monodromy $\phi$ given by some $\LagTuple^{\pm}$ yields two Lefschetz fibrations with their boundaries identified, and so a Weinstein convex hypersurface $G(\LagTuple^{\pm})$. 
+
+\begin{defn}
+$\LagTuple^{\pm}$ is a \emph{double positive factorization} (DPF) of $\phi$ and the convex hypersurface $G(\LagTuple^{\pm})$ is its \emph{geometric realization}. Write $W$ for the smooth $2n+2$ manifold underlying $G(\LagTuple^{\pm})$.
+\end{defn}
+
+By \cite{BHH:GirouxCorrespondence} all Weinstein convex hypersurfaces arise in this way and we know that they are all related by ``WLF moves''. This is a ``Giroux correspondence'' for $\dim > 2$ Weinstein convex hypersurfaces.
+
+\begin{ex}
+Suppose that $\mu$ and $\lambda$ are meridian and longitude circles on a punctured torus $T \setminus \{ pt \}$. Then $\LagTuple^{+} = (\mu, \lambda, \mu)$ and $\LagTuple^{-} = (\lambda, \mu, \lambda)$ give a DPF, determining a $\dim=4$ convex hypersurface. Indeed $\tau_{\mu}\tau_{\lambda}\tau_{\mu} = \tau_{\lambda}\tau_{\mu}\tau_{\lambda}$ is the classical braid relation. This can be generalized to higher dimensions by looking at matching paths in $A_{3}$ Milnor fibers.
+\end{ex}
+
+\section{Double positive factorizations and their geometric realizations}
+
+Let $\thicc{\Sigma} = (\Sigma, \beta, f)$ be a Weinstein domain. That is,
 \be
-\item a neighborhood $N$ of $\posLeg \cup \negLeg$ (disjoint union some other smooth Legendrians) and
-\item a contact Morse function $f$ on $N$ for which is constant along $\partial N$
+\item $\Sigma$ is a compact manifold with boundary,
+\item $\beta \in \Omega^{1}(\Sigma)$ is such that $d\beta$ is symplectic,
+\item the Liouville vector field $X_{\beta}$ defined $d\beta(X_{\beta}, \ast) = \beta$ points transversely out of $\partial \Sigma$, and
+\item $X_{\beta}$ is gradient-like for $f$, meaning that there is a $C > 0$ for which $df(X_{\beta}) > C(|df|^{2} + |X_{\beta}|^{2})$ with respect to some metric on $\Sigma$.
 \ee
-I'll neglect the smooth Legendrian components since the construction applies to components of $N$.
+Consequently $\Sigma$ has even dimension $2n$, and we assume throughout that $n \geq 1$.
 
-Identify $N$ with a contactization $[-1, 1]_{t} \times V$ where $V$ a plumbing of two copies of $\disk^{\ast}\sphere^{n-1}$, or equivalently an $A_{2}$ Milnor fiber. This is a Stein manifold and so the Liouville vector field $X_{V}$ on $V$ is gradient like for a Morse function $f_{V}$ on $V$, $\langle \grad f_{V}, X_{V} \rangle \geq \const \norm{ \grad f_{V}}^{2}$. By rescaling $f_{V}$ and possibly modifying it near $\partial V$ (without creating critical points), we can assume that $\const = f_{V}|_{\partial V} = 1$. On this contactization neighborhood, we can take our contact structure to be determined by $\alpha = dt + \beta$ where $\beta$ is the Liouville form for $V$, set $f = \half t^{2} + f_{V}$, and define $X = t\partial_{t} + X_{V}$. Then we compute
+A \emph{$\disk$-framed Lagrangian sphere} is a Lagrangian sphere $L \subset \Sigma$ with an identification $L = \sphere^{n} = \partial \disk^{n+1}$ which we call a $\disk$-framing. Two $\disk$ framings are equivalent if they differ by a diffeomorphism of $\sphere^{n}$ which extends to a diffeomorphism of $\disk^{n+1}$. In particular a $\disk$-framing encodes an orientation of $L$ once we have fixed an orientation of $\disk^{n+1}$. Note that an orientation is equivalent to a homotopy class of $\disk$-framing for $n < 6$. To simplify notation, $\disk$-framed Lagrangian spheres will simply denoted $L$ with a $\disk$-framing implicitly specified. We assume that $\disk$-framed Lagrangian spheres are \emph{Legendrian realizable}, meaning that $L$ does not bound a codimension $0$ submanifold of $\Sigma$. This is only a non-trivial constraint when $n > 1$.
+
+Write $\Symp_{c}(\thicc{\Sigma})$ for the space of compactly supported symplectomorphisms of $(\Sigma, d\beta)$. For $\phi, \psi \in \Symp_{c}(\thicc{\Sigma})$, we write $\phi \sim_{0} \psi$ if they live in the same connected component. Clearly $\sim_{0}$ defines an equivalence relation and we write $[\phi]$ for the equivalence class of $\phi$. Note that $\phi \in \Symp_{c}(\thicc{\Sigma})$ applied to a $\disk$-framed Lagrangian is also a $\disk$-framed Lagrangian. The $\beta$ and $f$ parts of a Weinstein structure are transformed by pullback $\phi^{\ast}$ so that compactly supported symplectomorphisms take Weinstein domains to Weinstein domains.
+
+A \emph{positive factorization of $\phi \in \Symp_{c}(\Sigma)$} is an ordered collection of $\disk$-framed Lagrangian spheres $\LagTuple = (L_{1}, \dots, L_{k})$ in $\Sigma$ such that
 \begin{equation*}
-\Lie_{X}\alpha = \alpha, \quad \grad f = t\partial_{t} + \grad f_{V}, \quad \langle \grad f, X\rangle = t^{2} + \langle \grad f_{V}, X_{V} \rangle \geq \norm{\grad f}^{2}.
+\tau_{\LagTuple} = \tau_{L_{k}} \circ \cdots \circ \tau_{L_{1}} \sim_{0} \phi
 \end{equation*}
+where $\tau_{L}$ is a positive symplectic Dehn twist about a Lagrangian sphere $L$. Positive Dehn twists are only defined up to $\sim_{0}$. We abbreviation PF for positive factorization. An \emph{isotopy} of a PF is a modification of one of the $L_{i} \in \LagTuple$ by a symplectic isotopy. Isotopies leave $[\tau_{\LagTuple}]$ unaffected. Observe that $\emptyset$ is a positive factorization of $\Id_{\Sigma}$.
 
-So $X$ is a contact vector field which is gradient-like for $f$. Moreover $f^{-1}(1)$ gives us $N$ with its corners rounded and so contains the singular Legendrian $\posLeg \cup \negLeg$ in its interior as desired. Moreover, the Morse critical points of $f$ are in one-to-one correspondence with those of $f_{V}$ in a way which preserves indices. So if we extend $f$ to the exterior $\divSet \setminus N$ of $N$ arbitrarily, then $N$ will be contained in a neighborhood of the $n$-skeleton of $\divSet$ since $n$ is the maximum index of a critical point of $f_{V}$.
+\subsection{Positive factorizations}
 
-\section{Conventions}
+A positive factorization $\LagTuple$ of a $\phi \in \Symp_{c}(\Sigma)$ determines a Lefschetz fibration $\pi: W \rightarrow \disk$ whose non-singular fiber is $\thicc{\Sigma} = \pi^{-1}(1)$, with $\# \LagTuple$ singular fibers. Here $\disk$ is the unit disk in $\C$. At the $k$th single fiber $\pi^{-1}(k\epsilon i)$ (with $\epsilon > 0$ small), we have a Lefschetz thimble whose projection to $\disk$ is the straight arc from $k\epsilon i$ to $1$ and whose boundary is $L_{k}$. We say that $(W, \pi)$ is the \emph{geometric realization} of $\LagTuple$. According to \cite{BHH:GirouxCorrespondence, GirouxPardon} every Weinstein manifold is the geometric realization of some positive factorization.
 
-Throughout $\hypersurface$ is a Weinstein convex hypersurface with decomposition $\posNegRegion, \divSet$. We'll take $\dim \divSet = 2n-1, \dim \hypersurface = 2n$.
+The total space of $W$ then has a Weinstein structure which depends only on the symplectic isotopy class of $\LagTuple$ and the constant $\epsilon$. Then $\partial W$ is naturally a contact manifold and is supported by an open book decomposition with page $(\Sigma, \beta)$ and monodromy $\tau_{\LagTuple}$.
 
-For Lefschetz fibrations we assume that neighborhoods of the boundaries of thimbles (AKA cocores) lie with a neighborhood of a page $W$. We label these Legendrians $\Leg_{j}$ so that they sit on $W \times \{ j \epsilon \}$ given by the time $j\epsilon$ Reeb flow applied to $W = W \times \{ 0 \}$. With this ordering convention the monodromy of the open book on the boundary is
+\subsection{Double positive factorizations}
+
+A \emph{double positive factorization} (DPF) is a triple $(\thicc{\Sigma}, \LagTuple^{-}, \LagTuple^{+})$ consisting of a Weinstein manifold $\thicc{\Sigma}$ and a pair ordered tuples of $\disk$-framed Lagrangian spheres $\LagTuple^{\pm} = (L^{\pm}_{i})_{i=1}^{k^{\pm}}$ for which
 \begin{equation*}
-\tau_{\Leg_{k}} \circ \cdots \circ \tau_{\Leg_{1}}: W \rightarrow W.
+\tau_{\LagTuple^{-}} \sim_{0} \tau_{\LagTuple^{+}}.
 \end{equation*}
-We say that the Lefschetz fibration is determined by $\thiccLeg = (\Leg_{1} \dots, \Leg_{k})$.
+There are many famous examples of DPFs: Consider the lantern or chain relations for $\Sigma$ an oriented surface with boundary.
 
-\begin{edits}
-This is opposite the convention from Ko's note! Sorry, I started this note a while ago.
-\end{edits}
+The \emph{geometric realization} of a DPF is a convex hypersurface $W$ of dimension $\dim \Sigma + 2$ whose positive region $W^{+}$ is the geometric realization of $\LagTuple^{+}$ and whose negative region $W^{-}$ is $\LagTuple^{-}$. The boundaries of the $W^{\pm}$ are identified using the open book decompositions with page $\Sigma$ and monodromy $\phi = \tau_{\LagTuple^{\pm}}$.
 
-Legendrian surgeries can be thought of as taking out a neighborhood $N = [-\epsilon, \epsilon] \times \disk^{\ast}\Leg$ of a Legendrian and gluing it back with a Dehn twist on the top $\{ \epsilon\} \times \disk^{\ast}\Leg$. In this picture, the cocore of the handle is the zero section of $N$, cf. \cite[\S 10]{Avdek:Dynamics}. So we can flow the cocore to the handle exterior using the $\pm$ Reeb flow to $\{ \pm \epsilon \} \times \Leg$.
+\begin{thm}
+Every convex hypersurface of dimension $\geq 4$ whose positive and negative regions are Weinstein is the geometric realization of some DPF.
+\end{thm}
 
-For a DPF, we have $\posNegRegion$ determined by Lefschetz fibrations with fiber $W$ and ordered collections of (framed) Legendrian spheres $\thiccPosNegLeg = (\posNegLeg_{i})_{i=1}^{k^{\pm}}, \posNegLeg_{i} \subset W$. We identify their boundaries when we have an identifications of the fibers of the Lefschetz fibrations on the $\posNegRegion$ with a fixed $W$ and
-\begin{equation*}
-\tau_{\thiccPosLeg} := \tau_{\posLeg_{k^{+}}} \circ \cdots \circ \tau_{\posLeg_{1}} = \tau_{\negLeg_{k^{-}}} \circ \cdots \circ \tau_{\negLeg_{1}} =: \tau_{\thiccNegLeg}.
-\end{equation*}
-Specifically the identification of the monodromies allows us identify the mapping tori
-\begin{equation*}
-[0, 1] \times W/ \sim^{\pm}, \quad (1, x) \sim^{\pm} (0, \tau_{\thiccPosNegLeg}).
-\end{equation*}
-From the open book picture, the mapping tori make up all of the $\partial \posNegRegion$ except for the binding. The identification trivially extends over the binding since it is $\partial W$.
-
-\subsection{Legendrian sum}
-
-Given a pair $\posNegLeg$ of Legendrians in a contact manifold $\divSet$ intersecting $\xi$-transversely at a single point, we define the Legendrian sum using the Lagrangian projection formulation from \cite{HH:Bypass}. If the $\posNegLeg$ sit on $\{ \epsilon \} \times W$, then we'll get $\negLeg \uplus \posLeg$ to be the Legendrian lift of the Lagrangian sphere
-\begin{equation*}
- \tau_{\posLeg} \negLeg = \tau_{\negLeg}^{-1} \posLeg \subset W
-\end{equation*}
-where $\tau$ is a Dehn twist. Then
-\begin{equation*}
-F^{\pm\epsilon}(\negLeg \uplus \posLeg) := \Flow_{\partial_{t}}^{\pm \epsilon}(\negLeg \uplus \posLeg) \subset ([0, \epsilon] \cup [2\epsilon, 3\epsilon]) \times W.
-\end{equation*}
-After a slight perturbation of the open book the $F^{\pm \epsilon}(\negLeg \uplus \posLeg)$ can be assumed to sit on pages as well.
-
-When $\posLeg$ is a standard unknot, we say that $\posLeg$ is \emph{$\theta$-above} $\negLeg$ if it has a $\theta$ disk which is disjoint from $F^{-\epsilon}\negLeg$ for $\epsilon$ small.
+\begin{proof}[Sketch of the proof]
+Suppose we're given a Weinstein convex hypersurface. Apply \cite{BHH:GirouxCorrespondence, GirouxPardon} to describe the positive and negative regions as geometric realizations of positive factorizations. This gives two open book decompositions of the dividing set $\Gamma$. Applying sufficiently many positive stabilizations to the two open books, they will eventually become isotopic \cite{BHH:GirouxCorrespondence}. The positive stabilization of the open book can be realized as stabilizations of the Lefschetz fibrations on the positive and negative regions, leaving the homotopy classes of their Weinstein structures unmodified. Once the open books are isotopic, we have realized the convex hypersurface as a DPF.
+\end{proof}
 
 \section{Bypasses}
 
@@ -373,26 +378,9 @@ To describe the boundary of the new positive region $\posRegion_{1}$ we perform 
 \label{Fig:OBBypassSlide}
 \end{figure}
 
-\begin{comment}
-\subsection{Antibypasses for DPFs}
-
-To perform an anti-bypass, we change the orientation on our convex hypersurface, apply a bypass, and then change the orientation again. Hence the analogue of Lemma \ref{Lemma:OBBypass} for anti-bypasses is as follows:
-
-\begin{lemma}\label{Lemma:OBAntiBypass}
-Suppose that the convex hypersurface is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give anti-bypass attachment data. The result of the anti-bypass can be described by a DPF $\thiccPosNegLeg_{a}$ given by
-\begin{equation*}
-\thiccPosLeg_{a} = (\tau_{\negLeg_{1}}\posLeg_{1}, \posLeg_{2}, \dots, \posLeg_{k^{+}}), \quad \thiccNegLeg_{a} = (\tau_{\negLeg_{1}}^{2}\posLeg_{1}, \negLeg_{2}, \dots, \negLeg_{k^{-}})
-\end{equation*}
-\end{lemma}
-\end{comment}
-
 \section{Obviously overtwisted objects}\label{Sec:OOExample}
 
-\begin{defn}\label{Def:OOB}
-We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obviously overtwisted bypass} (OOB). That is, $\posLeg$ is the unknot, $\posLag$ is the standard Lagrangian disk, and $\posLeg$ is $\theta$-above $\negLeg$.
-\end{defn}
-
-The definition ensures that the convex hypersurface $\Sigma_{1}$ resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}. We'll describe an OOB attachment on $\sphere^{2n}$ the boundary of a contact $\dim=2n+1$ Darboux disk, whence $R^{\pm} = \disk^{2n}$.
+The definition of OOB ensures that the convex hypersurface $\Sigma_{1}$ resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}. We'll describe an OOB attachment on $\sphere^{2n}$ the boundary of a contact $\dim=2n+1$ Darboux disk, whence $R^{\pm} = \disk^{2n}$.
 
 \begin{figure}[h]
 \begin{overpic}[scale=.25]{front_surface_matching_path.eps}
@@ -459,52 +447,6 @@ R^{\pm}_{ot} = \{ x(xy - 1) = z_{1}^{2} + z_{2}^{2} \} \subset \C^{4}_{x, y, z_{
 \end{equation*}
 (and I believe this could be generalized to other dimensions by adding more $z_{k}$s). The following are known facts for the $\dim=4, 6$ cases: The $R^{\pm}_{ot}$ are not flexible but embed into flexible manifolds of the same dimension. They have symplectic homology $SH = 0$ over $\Z$ but $SH \neq 0$ over a twisted coefficient system \cite{MS:Subflexible}, so their holomorphic curves should be quite complicated.
 
-\begin{comment}
-\subsection{Applying the anti-bypass}
-
-Just to see what the result looks like, let's apply an anti-bypass to the data of Equation \eqref{Eq:BypassSetup}. Plugging in Lemma \ref{Lemma:OBAntiBypass}, we get
-\begin{equation*}
-\thiccPosLeg = (x, y), \quad \thiccNegLeg = (y, \tau_{y}x) \quad \mapsto \quad \thiccPosLeg_{a} = (\tau_{y}x, y), \quad \thiccNegLeg_{a} = (\tau_{y}^{2}x, \tau_{y}x)
-\end{equation*}
-In this case, the positive and negative regions are again copies of $\disk^{2n}$ as they can both seen to be positive stabilizations.
-
-
-\section{Stabilization, unknots, and obviously overtwisted bypasses}
-
-Suppose that we have a Lefschetz fibration $\pi$ (whose total space has dimension $2n$) determined by some $\thiccLeg$ with non-singular fiber $W$ (of dimension $2n-2 > 0$). Write $\divSet$ for the boundary of the total space of $\pi$.
-
-Suppose that $W$ admits a Lefschetz fibration $\pi_{W}: W \rightarrow \disk$ for which we have a thimble $D \subset W$ with Legendrian boundary $\partial D \subset \partial W$. When $\dim W = 2$ this imposes no restrictions on $D$, other than it is a Legendrian-realized arc. We may attach a $\ind = n-1, \dim = 2n-2$ Weinstein handle $H_{D}$ to $W$ along $\partial D$. The union of the core Lagrangian disk $C_{D}$ of $H_{D}$ together with $D$ forms a Lagrangian sphere $\Leg_{D}$ in the surgered Weinstein manifold
-\begin{equation*}
-\Leg_{D} := C_{D} \cup D \subset W_{D} := W \cup H_{D}.
-\end{equation*}
-The $\Leg_{i} \subset W$ then determine $\Leg_{i} \subset W_{D}$ via the natural inclusion $W \subset W_{D}$. It follows that $\Leg_{D}$ intersects to cocore Lagrangian disk $C^{\perp}_{D}$ of $H_{D}$ exactly once,
-\begin{equation*}
-\#(\Leg_{D} \cap C^{\perp}_{D}) = 1.
-\end{equation*}
-
-Adding a $\ind=n, \dim=2n$ Weinstein handle $H_{\Leg_{D}}$ to the total space of $\pi$ then yields a \emph{stabilization} of $\pi$. It is determined by a tuple of Lagrangians in $W_{D}$ which we may view as Legendrians in the boundary of the total space of the new Lefschetz fibration,
-\begin{equation*}
-\thiccLeg_{s} = (\Leg_{D}, \Leg_{1}, \dots, \Leg_{k})
-\end{equation*}
-The boundary of the new Lefschetz fibration, $\pi_{s}$ is then supported by an open book which is a positive stabilization of the open book induced by $\pi$. Hence the boundary of the total space is again $\divSet$ with the same contact structure. Write $\Lag_{\Leg_{D}}$ for the Lefschetz thimble in the total space of $\pi_{s}$ for which
-\begin{equation*}
-\partial \Lag_{\Leg_{D}} = \Leg_{D} \subset \divSet
-\end{equation*}
-is Legendrian.
-
-\begin{lemma}
-$\Leg_{D}$ is a Legendrian unknot in $\divSet$ and $\Lag_{\Leg_{D}}$ is a standard bounding disk.
-\end{lemma}
-
-\begin{proof}
-In the case that $W = \disk^{2n-2}$ with $\pi_{W} = \sum z_{j}^{2}$, we obtain $W_{D} = \disk^{\ast}\sphere^{n-1}$ with $\Leg_{D} \subset W_{D}$ the zero section. The total space of $\pi_{s}$ is then $\disk^{2n}$ with $\Leg_{D}$ a standard Legendrian unknot bounding a standard Lagrangian disk.
-\end{proof}
-
-\begin{edits}
-Finish writing this proof. The idea is to build up the total space of $\pi_{s}$ from the basic example. The delicate point is that we need to ensure that the disk remains standard.
-\end{edits}
-\end{comment}
-
 \section{Backmatter}
 
 \begin{thebibliography}{}
@@ -535,10 +477,10 @@ D. Auroux and I. Smith, \textit{Lefschetz pencils, branched covers and symplecti
 \bibitem[Av11]{Avdek:ContactSurgery}
 R. Avdek, \textit{Contact surgery and supporting open books}, Algebr. Geom. Topol. Volume 13, p.1613-1660, 2013.
 
+\begin{comment}
 \bibitem[Av20]{Avdek:Dynamics}
 R. Avdek, \textit{Combinatorial Reeb dynamics on punctured contact $3$-manifolds}, to appear in Geom. Topol., arXiv:2005.11428, 2020.
 
-\begin{comment}
 \bibitem[Av21a]{Avdek:Liouville}
 R. Avdek, \textit{Liouville hypersurfaces and connect sum cobordisms}, J. Symplectic Geom., Vol. 19, 2021.
 
@@ -550,12 +492,7 @@ R. Avdek, \textit{A filtered generalization of the Chekanov-Eliashberg algebra},
 
 \bibitem[Av22b]{Avdek:Software}
 R. Avdek, \textit{Legendrian links}, software available at \url{https://github.com/RAvdek/legendrian_links}, 2022.
-\end{comment}
 
-\bibitem[Av23]{Avdek:Convex}
-R. Avdek, \textit{An algebraic generalization of Giroux's criterion}, arXiv:2307.09068, 2023.
-
-\begin{comment}
 \bibitem[BH15]{BH:ContactDefinition}
 E. Bao and K. Honda, \textit{Semi-global Kuranishi charts and the definition of contact homology}, arXiv:1512.00580, 2015.
 
@@ -568,10 +505,12 @@ D. Bar-Natan, S. Morrison, et. al, \textit{The Rolfsen knot table}, \url{http://
 
 \bibitem[Bj16]{Bjorklund:LCH}
 J. Bj\"{o}rklund, \textit{Legendrian contact homology in the product of a punctured Riemann surface and the real line}, Journal of the London Math. Soc., Vol. 94, no 3, p.970-992, 2016.
+\end{comment}
 
 \bibitem[BEM15]{BEM:OT}
 M. S. Borman, Y. Eliashberg, and E. Murphy, \textit{Existence and classification of overtwisted contact structures in all dimensions}, Acta Math. 215, p.281–361, 2015.
 
+\begin{comment}
 \bibitem[B02]{Bourgeois:Thesis}
 F. Bourgeois, \textit{A Morse-Bott approach to contact homology}, PhD thesis, Stanford University, 2002.
 
@@ -610,21 +549,24 @@ Invent. math., Volume 175, p. 611–680, 2009.
 
 \bibitem[BT82]{BottTu}
 R. Bott and L. R. Tu, \textit{Differential forms in algebraic topology}, Graduate Texts in Mathematics 82, Springer-Verlag, 1982.
+\end{comment}
 
 \bibitem[BHH]{BHH:GirouxCorrespondence}
 J. Breen, K. Honda, and Y. Huang, \textit{The Giroux correspondence in arbitrary dimensions}, arXiv:2307.02317, 2023.
 
+\begin{comment}
 \bibitem[CGKS14]{CGKS:Polyfilling}
 C. Cao, N. Gallup, K. Hayden, J. M. Sabloff, \textit{Topologically Distinct Lagrangian and Symplectic Fillings}, Math. Research Letters, Vol. 21, p.85-99, 2014.
+
+\bibitem[CMP19]{CMP:OT}
+R. Casals, E. Murphy, and F. Presas, \textit{Geometric criteria for overtwistedness}, J. Amer. Math. Soc. 32, p.563–604, 2019.
 \end{comment}
 
 \bibitem[CM19]{CM:LegendrianFronts}
 R. Casals and E. Murphy, \textit{Legendrian fronts for affine varieties}, Duke Math. J. 168(2): p.225-323, 2019.
 
-\begin{comment}
-\bibitem[CMP19]{CMP:OT}
-R. Casals, E. Murphy, and F. Presas, \textit{Geometric criteria for overtwistedness}, J. Amer. Math. Soc. 32, p.563–604, 2019.
 
+\begin{comment}
 \bibitem[CG86]{CG:Cobordisms}
 A. Casson, C. M. Gordon, \textit{Cobordism of classical knots}, from: "{\'A} la recherche de la topologie perdue" (editors L Guillou, A Marin), Progr. Math. 62, Birkh{\"a}user 181, 1986.
 
@@ -846,17 +788,16 @@ E. Giroux, \textit{G\'{e}om\'{e}trie de contact: de la dimension trois vers les 
 
 \bibitem[Girou17]{Giroux:IdealLiouville}
 E. Giroux, \textit{Ideal Liouville Domains - a cool gadget}, J. Symplectic Geom., Volume 18, p.769–790, 2017.
+\end{comment}
 
 \bibitem[GP17]{GirouxPardon}
 E. Giroux and J. Pardon, \textit{Existence of Lefschetz fibrations on Stein and Weinstein domains}, Geom. Topol., 21, no. 2, 963–997, 2017.
-\end{comment}
 
 \bibitem[Go98]{Gompf:Handlebodies}
 R. Gompf, \textit{Handlebody construction of Stein surfaces}, Ann. of Math. 148,
 p.619-693, 1998.
 
 \begin{comment}
-
 \bibitem[GS99]{GS:KirbyCalculus}
 R. Gopf and A. Stipsicz, \textit{4-manifolds and Kirby Calculus}, Graduate Studies in Mathematics 20, Amer. Math. Society, Providence, RI, 1999.
 
@@ -905,10 +846,10 @@ K. Honda and H. Huang, \textit{Bypass attachments in higher-dimensional contact 
 \bibitem[HH19]{HH:Convex}
 K. Honda and H. Huang, \textit{Convex hypersurface theory in contact topology}, preprint, arXiv:1907.06025, 2019.
 
-\begin{comment}
 \bibitem[HT22]{HT:Category}
 Ko Honda and Yin Tian, \textit{Contact categories of disks}, J. Symp. Geom., Vol. 20, 2022.
 
+\begin{comment}
 \bibitem[Hua13]{Huang:OTClassification}
 Y. Huang, \textit{A proof of the classification theorem of overtwisted contact structures via convex surface theory}, J. Symplectic Geom.
 Volume 11, Number 4, p.563-601, 2013.
@@ -1002,7 +943,6 @@ A. Moreno and Z. Zhou, \textit{A landscape of contact manifolds via rational SFT
 
 \bibitem[MS18]{MS:Subflexible}
 E. Murphy and K. Siegel, \textit{Subflexible symplectic manifolds}, Geom. Topol. 22, p.2367-2401, 2018.
-
 
 \begin{comment}
 \bibitem[N01]{Ng:Satellites}

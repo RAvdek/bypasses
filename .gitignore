@@ -7,6 +7,6 @@
 *.log
 *.snm
 *.toc
-*-converted-to.pdf
+*.pdf
 zipit*
 .DS_Store
