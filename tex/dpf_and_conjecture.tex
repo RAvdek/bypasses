@@ -203,16 +203,20 @@
 %\topmargin0in \textheight8.7in \textwidth6.5in \oddsidemargin0in
 %\evensidemargin0in
 
-\title[Weinstein convex hypersurfaces]{A tightness criterion for Weinstein convex hypersurfaces}
+\title[Weinstein convex hypersurfaces]{A tightness criterion for Weinstein convex hypersurfaces?}
 %\author{Russell Avdek}
 
 \begin{document}
 
+\setcounter{tocdepth}{1}
 \maketitle
+\tableofcontents
 
 \section{What do we want to prove?}
 
-Our goal is to give a tightness criterion for (neighborhoods of) Weinstein convex hypersurfaces \cite{HH:Convex} in analogy with ``a contact manifold is overtwisted iff it is the negative stabilization of some open book''. Here is our candidate criterion, posed as a definition and question:
+Our goal is to state and prove a tightness criterion for (neighborhoods of) Weinstein convex hypersurfaces \cite{HH:Convex} in analogy with ``a contact manifold is overtwisted iff it is the negative stabilization of some open book''. Such a criterion would be useless to apply against examples, but would be interesting as a theoretical tool and perhaps be useful in developing algebraic invariants which could detect tightness.
+
+Here is our candidate criterion, posed as a definition and question:
 
 \begin{defn}\label{Def:OOB}
 We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obviously overtwisted bypass} (OOB). That is, $\posLeg$ is the unknot, $\posLag$ is the standard Lagrangian disk, and $\posLeg$ is $\theta$-above $\negLeg$.
@@ -222,31 +226,15 @@ We'll say that a bypass as described in \cite[\S 10]{HH:Bypass} is an \emph{obvi
 Is every convex hypersurface $\Sigma$ with an overtwisted $t$-invariant neighborhood the result of an obviously overtwisted bypass attachment to some $\Sigma'$?
 \end{q}
 
-\subsection{Some speculation}
+To describe convex hypersurfaces we will use Lefschetz fibrations to encode them as \emph{double positive factorizations} (DPFs).\footnote{These are called folded Weinstein Lefschetz fibrations in Breen's most recent article \cite{Breen:Folded}, but these notes are old and I haven't yet had the chance to update notation.} Then bypasses can be described as a sort of combinatorial modification of a DPF. This is not strictly necessary to address a generalized Giroux criterion, but provides a simple means of producing examples in higher dimensions where Legendrian surgeries are difficult to intuit and could give a simpler means of expressing a tightness criterion.
 
-We'll sketch a strategy for proving that the answer to Question \ref{Q:OTCriterion} is yes.
+We'll describe what DPFs are, how to express bypasses in the DPF picture, and use them to give explicit examples of obvious overtwisted bypasses (OOBs). We can attach an OOB to the boundary of a Darboux ball, to get an overtwisted $\dim=2n+1$ disk which we call the obviously overtwisted disk (OOD). At the end of the note, we'll give some speculation on how Question \eqref{Q:OTCriterion} might be attacked using OODs. There are some additional notes on how DPFs can be modified by Weinstein Lefschetz fibration moves (as in \cite{BHH:GirouxCorrespondence}), though they are in an even rougher state than the current document.
 
-\begin{edits}
-For Yang: Assuming the conjecture is true, you would probably have a cleaner route to proving it. The strategy is probably pretty sketchy and it might be better to skip ahead and come back to this later.
-\end{edits}
-
-Let's take a fixed $\Sigma$ which has an overtwisted $t$-invariant neighborhood $[0, 1] \times \Sigma$. We'll attempt to prove that $\Sigma$ is the result of an OOB attachment.
-
-In \S \ref{Sec:OOExample} we describe ``obviously overtwisted disks'' (OODs) which are overtwisted objects obtained for OOB attachments. They can be described explicitly using Lefschetz fibration data in all dimensions.
-
-The $h$-principle should allow us to find OODs in a $t$-invariant $(0, 1)_{t} \times \Sigma$ since this neighborhood is overtwisted. I don't know how to formalize this. Assuming this is true, there will be OOBs inside $[0 ,1)_{t} \times \Sigma$ which can be attached to $\{ 0 \} \times \Sigma$: Attach one end of a contact $1$-handle to the dividing set of $\{ 0 \} \times \Sigma$ and the other end to the dividing set of the OOD. This is the same as first connecting $\{0\} \times \Sigma$ to the boundary of a Darboux ball -- which gives us back $\Sigma$, unmodified -- and then applying an OOB attachment.
-
-Say we attach such an OOB, $B_{1}$, to $\{ 0 \} \times \Sigma$. Then by \cite[Theorem 1.2.5]{HH:Convex} we can get from $\{ 0 \} \times \Sigma$ to $\{ 1 \} \times \Sigma$ by a sequence of bypass attachments $B_{1}, \cdots, B_{k}$ so that the union of all of the bypass attachment slices will be isotopic to the $t$-invariant $[0, 1]\times \Sigma$.
-
-If we can perform handle-slides and rearrange the orders of attachment so that there are bypasses $B'_{1}, \dots, B'_{k'}$ getting us from $\{ 0 \} \times \Sigma$ back to itself and with $B'_{k'}$ obviously overtwisted, then $\Sigma = \{ 1 \} \times \Sigma$ will be the result of an OOB attachment to $\Sigma'$, which is given by attaching the bypasses $B_{1}', \dots, B_{k'-1}'$, answering Question \ref{Q:OTCriterion} in the affirmative.
-
-The OOB $B_{1}$ is attached along a ball in $\Sigma$, so maybe it's possible that it could be avoided during any handle-slides and changing of the orders of bypasses, guaranteeing $B'_{k'} = B_{1}$. If true, then $\Sigma$ would be determined by the model OOB attachment described in \S \ref{Sec:OOExample}. Perhaps this is overly optimistic. Assuming that the strategy of rearranging the orders of bypasses works, I don't know if it would be any easier to prove using DPFs or contact handle attachments.
+\section{Double positive factorizations and their geometric realizations}
 
 \subsection{DPFs overview}
 
-To describe convex hypersurfaces and bypasses we will use the language of Lefschetz fibrations to encode them as \emph{double positive factorizations} (DPFs). This is not strictly necessary to address a generalized Giroux criterion, but provides a simple means of producing examples in higher dimensions where handle-bodies are difficult to intuit.
-
-Applying \cite{BHH:GirouxCorrespondence, GirouxPardon}, any $\dim = 2n+2$ Weinstein manifold can be described by the ``combinatorial'' data of a Lefschetz fibration, that is, an ordered sequence of (framed) Lagrangian spheres $\LagTuple = (L_{1}, \dots, L_{k})$ in some $\dim=2n$ Weinstein manifold which are the boundaries of Lefschetz thimbles. Then the boundary is described as an open book with monodromy a product of the Dehn twists along the spheres, $\phi = \tau_{L_{k}}\circ \cdots \circ \tau_{L_{1}}$. An open book with \emph{two} positive Dehn twist factorizations of its monodromy $\phi$ given by some $\LagTuple^{\pm}$ yields two Lefschetz fibrations with their boundaries identified, and so a Weinstein convex hypersurface $G(\LagTuple^{\pm})$. 
+Applying \cite{BHH:GirouxCorrespondence, GirouxPardon}, any $\dim = 2n+2$ Weinstein manifold can be described by the ``combinatorial'' data of a Lefschetz fibration, that is, an ordered sequence of (framed) Lagrangian spheres $\LagTuple = (L_{1}, \dots, L_{k})$ in some $\dim=2n$ Weinstein manifold which are the boundaries of Lefschetz thimbles in the total space. Then the boundary is described as an open book with monodromy a product of the Dehn twists along the spheres, $\phi = \tau_{L_{k}}\circ \cdots \circ \tau_{L_{1}}$. An open book with \emph{two} positive Dehn twist factorizations of its monodromy $\phi$ given by some $\LagTuple^{\pm}$ yields two Lefschetz fibrations with their boundaries identified. The total spaces of these Lefschetz fibrations then give the positive and negative regions of a Weinstein convex hypersurface $G(\LagTuple^{\pm})$. 
 
 \begin{defn}
 $\LagTuple^{\pm}$ is a \emph{double positive factorization} (DPF) of $\phi$ and the convex hypersurface $G(\LagTuple^{\pm})$ is its \emph{geometric realization}. Write $W$ for the smooth $2n+2$ manifold underlying $G(\LagTuple^{\pm})$.
@@ -254,11 +242,13 @@ $\LagTuple^{\pm}$ is a \emph{double positive factorization} (DPF) of $\phi$ and 
 
 By \cite{BHH:GirouxCorrespondence} all Weinstein convex hypersurfaces arise in this way and we know that they are all related by ``WLF moves''. This is a ``Giroux correspondence'' for $\dim > 2$ Weinstein convex hypersurfaces.
 
+\begin{comment}
 \begin{ex}
 Suppose that $\mu$ and $\lambda$ are meridian and longitude circles on a punctured torus $T \setminus \{ pt \}$. Then $\LagTuple^{+} = (\mu, \lambda, \mu)$ and $\LagTuple^{-} = (\lambda, \mu, \lambda)$ give a DPF, determining a $\dim=4$ convex hypersurface. Indeed $\tau_{\mu}\tau_{\lambda}\tau_{\mu} = \tau_{\lambda}\tau_{\mu}\tau_{\lambda}$ is the classical braid relation. This can be generalized to higher dimensions by looking at matching paths in $A_{3}$ Milnor fibers.
 \end{ex}
+\end{comment}
 
-\section{Double positive factorizations and their geometric realizations}
+\subsection{Some details}
 
 Let $\thicc{\Sigma} = (\Sigma, \beta, f)$ be a Weinstein domain. That is,
 \be
@@ -300,13 +290,13 @@ Every convex hypersurface of dimension $\geq 4$ whose positive and negative regi
 \end{thm}
 
 \begin{proof}[Sketch of the proof]
-Suppose we're given a Weinstein convex hypersurface. Apply \cite{BHH:GirouxCorrespondence, GirouxPardon} to describe the positive and negative regions as geometric realizations of positive factorizations. This gives two open book decompositions of the dividing set $\Gamma$. Applying sufficiently many positive stabilizations to the two open books, they will eventually become isotopic \cite{BHH:GirouxCorrespondence}. The positive stabilization of the open book can be realized as stabilizations of the Lefschetz fibrations on the positive and negative regions, leaving the homotopy classes of their Weinstein structures unmodified. Once the open books are isotopic, we have realized the convex hypersurface as a DPF.
+See \cite{Breen:Folded}. Suppose we're given a Weinstein convex hypersurface. Apply \cite{BHH:GirouxCorrespondence, GirouxPardon} to describe the positive and negative regions as geometric realizations of positive factorizations. This gives two open book decompositions of the dividing set $\Gamma$. Applying sufficiently many positive stabilizations to the two open books, they will eventually become isotopic \cite{BHH:GirouxCorrespondence}. The positive stabilization of the open book can be realized as stabilizations of the Lefschetz fibrations on the positive and negative regions, leaving the homotopy classes of their Weinstein structures unmodified. Once the open books are isotopic, we have realized the convex hypersurface as a DPF.
 \end{proof}
 
 \section{Bypasses}
 
 \begin{defn}
-Bypass attachment data consists of a tuple $(\posNegLeg, \posNegLag)$ for which $\posNegLeg$ is a pair of Legendrians intersecting in a single point and $\posNegLag$ are Lagrangian slice disks in the $\posNegRegion$ for the $\posNegLeg$.
+Bypass attachment data consists of a tuple $(\posNegLeg, \posNegLag)$ for which $\posNegLeg$ is a pair of Legendrian spheres in $\divSet$ intersecting in a single point and $\posNegLag$ are Lagrangian slice disks in the $\posNegRegion$ for the $\posNegLeg$.
 \end{defn}
 
 If we attach a bypass to $[-\epsilon, 0] \times \hypersurface$ at $\{ 0 \} \times \hypersurface$ using the data of $(\posNegLeg, \posNegLag)$ then we get a contact structure on $[-\epsilon, 1] \times \hypersurface$ with $\hypersurface_{1} = \{1\} \times \hypersurface$ described as in \cite[Theorem 5.1.3]{HH:Bypass}:
@@ -315,6 +305,24 @@ If we attach a bypass to $[-\epsilon, 0] \times \hypersurface$ at $\{ 0 \} \time
 \item $\divSet_{1}$ is obtained by performing a contact $+1$ surgery on $F^{\mp\epsilon}\posNegLeg$ and a contact $-1$ surgery along $(\negLeg \uplus \posLeg)$.
 \item The boundaries of the $\posNegRegion_{1}$ are identified by the contactomorphism $\partial \posRegion_{1} \rightarrow \partial \negRegion_{1}$ obtained by sliding $F^{-\epsilon}\posLeg$ up over $(\negLeg \uplus \posLeg)$ to $F^{\epsilon}\negLeg$.
 \ee
+
+Briefly, let's describe what is $(\negLeg \uplus \posLeg)$.
+
+\subsection{Legendrian sum}
+
+Given a pair $\posNegLeg$ of Legendrians in a contact manifold $\divSet$ intersecting $\xi$-transversely at a single point, we define the Legendrian sum using the Lagrangian projection formulation from \cite[\S 4.1.2]{HH:Bypass}. Let $W$ be a plumbing of two cotangent bundles of spheres. We can see $W$ sitting inside of $\Mxi$ as a Liouville hypersurface, with the $\posNegLeg$ being zero sections. So when $\dim \posNegLeg = 1$, $W$ is a genus one surface with one boundary component, and the $\posNegLeg$ are circles meeting transversely at one point. We'll later generalize this to higher dimensions. The hypersurface has a neighborhood of the form $[0, 3\epsilon]_{t} \times W$ along which $\alpha = dt + \beta$ for a Liouville form on $W$.
+
+ If the $\posNegLeg$ sit on $\{ \epsilon \} \times W$, then we'll get $\negLeg \uplus \posLeg$ to be the Legendrian lift of the Lagrangian sphere
+\begin{equation*}
+ \tau_{\posLeg} \negLeg = \tau_{\negLeg}^{-1} \posLeg \subset W
+\end{equation*}
+where $\tau$ is a Dehn twist. Then
+\begin{equation*}
+F^{\pm\epsilon}(\negLeg \uplus \posLeg) := \Flow_{\partial_{t}}^{\pm \epsilon}(\negLeg \uplus \posLeg) \subset ([0, \epsilon] \cup [2\epsilon, 3\epsilon]) \times W.
+\end{equation*}
+After a slight perturbation of the open book the $F^{\pm \epsilon}(\negLeg \uplus \posLeg)$ can be assumed to sit on pages as well.
+
+When $\posLeg$ is a standard unknot, we say that $\posLeg$ is \emph{$\theta$-above} $\negLeg$ if it has a $\theta$ disk which is disjoint from $F^{-\epsilon}\negLeg$ for $\epsilon$ small. See \cite{HH:Bypass} for a definition of $\theta$ disk.
 
 \subsection{Bypasses for DPFs}
 
@@ -380,7 +388,7 @@ To describe the boundary of the new positive region $\posRegion_{1}$ we perform 
 
 \section{Obviously overtwisted objects}\label{Sec:OOExample}
 
-The definition of OOB ensures that the convex hypersurface $\Sigma_{1}$ resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}. We'll describe an OOB attachment on $\sphere^{2n}$ the boundary of a contact $\dim=2n+1$ Darboux disk, whence $R^{\pm} = \disk^{2n}$.
+The definition of the obviously overtwisted bypass (OOB) ensures that the convex hypersurface $\Sigma_{1}$ resulting from the bypass will have an overtwisted neighborhood. It is a priori stronger than the \emph{overtwisted bypass} of \cite{HH:Bypass}. We'll describe an OOB attachment on $\sphere^{2n}$ the boundary of a contact $\dim=2n+1$ Darboux disk, whence $R^{\pm} = \disk^{2n}$. When this OOB is attached to the boundary of the Darboux ball, we get an obviously overtwisted disk (OOD).
 
 \begin{figure}[h]
 \begin{overpic}[scale=.25]{front_surface_matching_path.eps}
@@ -447,7 +455,21 @@ R^{\pm}_{ot} = \{ x(xy - 1) = z_{1}^{2} + z_{2}^{2} \} \subset \C^{4}_{x, y, z_{
 \end{equation*}
 (and I believe this could be generalized to other dimensions by adding more $z_{k}$s). The following are known facts for the $\dim=4, 6$ cases: The $R^{\pm}_{ot}$ are not flexible but embed into flexible manifolds of the same dimension. They have symplectic homology $SH = 0$ over $\Z$ but $SH \neq 0$ over a twisted coefficient system \cite{MS:Subflexible}, so their holomorphic curves should be quite complicated.
 
-\section{Backmatter}
+\begin{comment}
+\section{Some speculation}\label{Sec:Speculation}
+
+We'll sketch a strategy for proving that the answer to Question \ref{Q:OTCriterion} is yes. Experts might recognize that this is nonsense or that there is a more elegant strategy for addressing Question \ref{Q:OTCriterion}.
+
+Let's take a fixed $\Sigma$ which has an overtwisted $t$-invariant neighborhood $[0, 1] \times \Sigma$. We'll attempt to prove that $\Sigma$ is the result of an OOB attachment.
+
+The $h$-principle should allow us to find OODs in a $t$-invariant $(0, 1)_{t} \times \Sigma$ since this neighborhood is overtwisted. I don't know how to formalize this. Assuming this is true, there will be OOBs inside $[0 ,1)_{t} \times \Sigma$ which can be attached to $\{ 0 \} \times \Sigma$: Attach one end of a contact $1$-handle to the dividing set of $\{ 0 \} \times \Sigma$ and the other end to the dividing set of the OOD. This is the same as first connecting $\{0\} \times \Sigma$ to the boundary of a Darboux ball -- which gives us back $\Sigma$, unmodified -- and then applying an OOB attachment.
+
+Say we attach such an OOB, $B_{1}$, to $\{ 0 \} \times \Sigma$. Then by \cite[Theorem 1.2.5]{HH:Convex} we can get from $\{ 0 \} \times \Sigma$ to $\{ 1 \} \times \Sigma$ by a sequence of bypass attachments $B_{1}, \cdots, B_{k}$ so that the union of all of the bypass attachment slices will be isotopic to the $t$-invariant $[0, 1]\times \Sigma$.
+
+If we can perform handle-slides and rearrange the orders of attachment so that there are bypasses $B'_{1}, \dots, B'_{k'}$ getting us from $\{ 0 \} \times \Sigma$ back to itself and with $B'_{k'}$ obviously overtwisted, then $\Sigma = \{ 1 \} \times \Sigma$ will be the result of an OOB attachment to $\Sigma'$, which is given by attaching the bypasses $B_{1}', \dots, B_{k'-1}'$, answering Question \ref{Q:OTCriterion} in the affirmative.
+
+The OOB $B_{1}$ is attached along a ball in $\Sigma$, so maybe it's possible that it could be avoided during any handle-slides and changing of the orders of bypasses, guaranteeing $B'_{k'} = B_{1}$. If true, then $\Sigma$ would be determined by the model OOB attachment described in \S \ref{Sec:OOExample}. Perhaps this is overly optimistic. Assuming that the strategy of rearranging the orders of bypasses works, I don't know if it would be any easier to prove using DPFs or usual contact handle attachments.
+\end{comment}
 
 \begin{thebibliography}{}
 \begin{comment}
@@ -550,6 +572,9 @@ Invent. math., Volume 175, p. 611–680, 2009.
 \bibitem[BT82]{BottTu}
 R. Bott and L. R. Tu, \textit{Differential forms in algebraic topology}, Graduate Texts in Mathematics 82, Springer-Verlag, 1982.
 \end{comment}
+
+\bibitem[Br23]{Breen:Folded}
+J. Breen, \textit{Folded symplectic forms in contact topology}, arXiv:2311.16058, 2023.
 
 \bibitem[BHH]{BHH:GirouxCorrespondence}
 J. Breen, K. Honda, and Y. Huang, \textit{The Giroux correspondence in arbitrary dimensions}, arXiv:2307.02317, 2023.
