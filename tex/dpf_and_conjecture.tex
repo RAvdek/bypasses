@@ -234,7 +234,15 @@ We'll describe what DPFs are, how to express bypasses in the DPF picture, and us
 
 \subsection{DPFs overview}
 
+\begin{edits}
+Fibers of LFs should be $F$. Legendrians should be $\Leg$ and Lagrangian thimbles should be $\Lag$.
+\end{edits}
+
 Applying \cite{BHH:GirouxCorrespondence, GirouxPardon}, any $\dim = 2n+2$ Weinstein manifold can be described by the ``combinatorial'' data of a Lefschetz fibration, that is, an ordered sequence of (framed) Lagrangian spheres $\LagTuple = (L_{1}, \dots, L_{k})$ in some $\dim=2n$ Weinstein manifold which are the boundaries of Lefschetz thimbles in the total space. Then the boundary is described as an open book with monodromy a product of the Dehn twists along the spheres, $\phi = \tau_{L_{k}}\circ \cdots \circ \tau_{L_{1}}$. An open book with \emph{two} positive Dehn twist factorizations of its monodromy $\phi$ given by some $\LagTuple^{\pm}$ yields two Lefschetz fibrations with their boundaries identified. The total spaces of these Lefschetz fibrations then give the positive and negative regions of a Weinstein convex hypersurface $G(\LagTuple^{\pm})$. 
+
+\begin{edits}
+We should specify that the Weinstein domain is obtained by attaching handles along the fibers at angles $\theta_{k} = k2\pi i/|\Leg|$ in the pages of the open book. Then we can push the cocores out of the attaching handles easily.
+\end{edits}
 
 \begin{defn}
 $\LagTuple^{\pm}$ is a \emph{double positive factorization} (DPF) of $\phi$ and the convex hypersurface $G(\LagTuple^{\pm})$ is its \emph{geometric realization}. Write $W$ for the smooth $2n+2$ manifold underlying $G(\LagTuple^{\pm})$.
@@ -325,6 +333,10 @@ After a slight perturbation of the open book the $F^{\pm \epsilon}(\negLeg \uplu
 When $\posLeg$ is a standard unknot, we say that $\posLeg$ is \emph{$\theta$-above} $\negLeg$ if it has a $\theta$ disk which is disjoint from $F^{-\epsilon}\negLeg$ for $\epsilon$ small. See \cite{HH:Bypass} for a definition of $\theta$ disk.
 
 \subsection{Bypasses for DPFs}
+
+\begin{edits}
+We have to specify that we push the Legendrian cocores downward out of the handles for this to make sense. We'll get a different answer if we push upwards.
+\end{edits}
 
 \begin{lemma}\label{Lemma:OBBypass}
 Suppose that the convex hypersurface $\Sigma = \Sigma_{0}$ is described by a DPF $\thiccPosNegLeg$ with the $\posNegLeg_{1}$ intersecting transversely at a single point in $W$. Then the $\posNegLeg_{1}$ together with their thimbles $\posNegLag_{1} \subset \posNegRegion$ give bypass attachment data. The result of the bypass, $\Sigma_{1}$, can be described by a DPF $\thiccPosNegLeg_{b}$ given by
@@ -455,6 +467,10 @@ R^{\pm}_{ot} = \{ x(xy - 1) = z_{1}^{2} + z_{2}^{2} \} \subset \C^{4}_{x, y, z_{
 \end{equation*}
 (and I believe this could be generalized to other dimensions by adding more $z_{k}$s). The following are known facts for the $\dim=4, 6$ cases: The $R^{\pm}_{ot}$ are not flexible but embed into flexible manifolds of the same dimension. They have symplectic homology $SH = 0$ over $\Z$ but $SH \neq 0$ over a twisted coefficient system \cite{MS:Subflexible}, so their holomorphic curves should be quite complicated.
 
+\subsection{Recalculation}
+
+Start with $\Leg^{+} = \Leg^{-} = (x, y)$. Then we handle slide $y$ down through $x$ on the negative side yielding $(\tau_{x}^{-1}y, x)$. Now the boundary of the thimble for what was previously $y$ is represented as $\tau_{x}^{-1}y = \tau_{y}x$.
+
 \begin{comment}
 \section{Some speculation}\label{Sec:Speculation}
 
@@ -478,7 +494,7 @@ The OOB $B_{1}$ is attached along a ball in $\Sigma$, so maybe it's possible tha
 C. Abbas, \textit{Holomorphic open book decompositions}, Duke Math. J., Vol. 158, p.29-82, 2011.
 
 \bibitem[AbbCH05]{ACH:PlanarWeinstein}
-C. Abbas, K. Cieliebak, H. Hofer, \textit{The Weinstein conjecture for planar contact structures in dimension three}, Comment. Math. Helv. 80, p.771–793, 2005.
+C. Abbas, K. Cieliebak, H. Hofer, \textit{The Weinstein conjecture fcdor planar contact structures in dimension three}, Comment. Math. Helv. 80, p.771–793, 2005.
 
 \bibitem[AS06]{AS:Cotangent}
 A. Abbondandolo and M. Schwarz, \textit{On the Floer homology of cotangent bundles}, Comm.
